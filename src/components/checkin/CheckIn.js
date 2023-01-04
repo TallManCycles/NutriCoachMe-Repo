@@ -30,16 +30,12 @@ const CheckIn = () => {
       cravings: formData.cravings,
       feeling: formData.acheivements })
 
-    if (!error) {
+    if (!error)
     toast.success(`Successfully sent checkin`, {
       theme: 'colored'
     }); 
-
-    //Clear form
-    document.getElementById("checkin")
-    .reset(); }
     else 
-    toast.error(`Something went wrong ${error}`)
+    toast.error(`Something went wrong ${error.message}`)
   };
 
   return (

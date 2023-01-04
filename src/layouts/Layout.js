@@ -11,6 +11,7 @@ import Starter from 'components/pages/Starter';
 import AppContext from 'context/Context';
 import Error404 from 'components/errors/Error404';
 
+//Login Screens
 import AuthSimpleLayout from './AuthSimpleLayout';
 import SimpleLogin from 'components/authentication/Login';
 import SimpleLogout from 'components/authentication/Logout';
@@ -19,10 +20,23 @@ import SimpleForgetPassword from 'components/authentication/ForgetPassword';
 import SimplePasswordReset from 'components/authentication/PasswordReset';
 import SimpleConfirmMail from 'components/authentication/ConfirmMail';
 import SimpleLockScreen from 'components/authentication/LockScreen';
+import Login from 'components/authentication/Login';
+
+//Main user page
+import Main from 'components/pages/Main';
+
+//Check In Screen
 import CheckIn from 'components/checkin/CheckIn';
 
+//User Settings
+import Profile from 'components/user/profile/Profile';
+import Settings from 'components/user/settings/Settings';
+
+//Database
 import { supabase } from 'supabase/supabaseClient'
-import Login from 'components/authentication/Login';
+
+//Video Call link
+import Calendar from 'components/app/Calendar';
 
 const Layout = () => {
 
@@ -96,23 +110,22 @@ const Layout = () => {
           <Route path="/" element={<Login/>} />
         </Route>
        : 
-        <Route element={<MainLayout />}>
-        <Route path="/" element={<Starter />} />
-        <Route path="/checkin/checkin" element={<CheckIn />} />
-        <Route path="pages/starter" element={<Starter />} />
-      </Route>
-      }
-        </>
+       <Route element={<MainLayout />}>
+          <Route path="/" element={<Main />} />
 
+          <Route path="app/calendar" element={<Calendar/>} />
 
-        <Route element={<MainLayout />}>
-          <Route path="/" element={<Starter />} />
+          <Route path="user/profile" element={<Profile />} />
+          <Route path="user/settings" element={<Settings />} />
+
           <Route path="/checkin/checkin" element={<CheckIn />} />
           <Route path="pages/starter" element={<Starter />} />
         </Route>
-        <Route path="*" element={<Navigate to="/errors/404" replace />} />
-      </Routes>
+        }
 
+        </>
+        <Route path="*" element={<Navigate to="/errors/404" replace />} />
+        </Routes>
       {/* <SettingsToggle /> */}
       <SettingsPanel />
       <ToastContainer

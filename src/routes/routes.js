@@ -27,7 +27,7 @@ export const appRoutes = {
       active: true
     },
     {
-      name: 'Calendar',
+      name: 'Book A Video Call',
       icon: 'calendar-alt',
       to: '/app/calendar',
       active: true
