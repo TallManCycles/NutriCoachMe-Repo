@@ -2,7 +2,6 @@ import React from 'react';
 import { Button, Card, Col, Row, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import editing from 'assets/img/icons/spot-illustrations/21.png';
-import Iframe from './Iframe';
 
 const Main = () => {
   return (
