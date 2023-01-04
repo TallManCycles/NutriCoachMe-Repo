@@ -10,20 +10,20 @@ const ForgetPasswordForm = () => {
   const [email, setEmail] = useState('');
 
   // Handler
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
     if (email) {      
-      const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
-        redirectTo: '/authentication/reset-password',
-      })
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: '/authentication/reset-password'
+      });
 
       if (!error) {
         toast.success(`An email is sent to ${email} with password reset link`, {
           theme: 'colored'
         });
       } else {
-        toast.error(`An error has occured ${erorr}`)
+        toast.error(`An error has occured ${error}`)
       }
     }
   };

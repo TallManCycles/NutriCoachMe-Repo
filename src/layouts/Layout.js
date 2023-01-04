@@ -94,7 +94,7 @@ const Layout = () => {
         <>
         {!session ? 
         <Route element={<AuthSimpleLayout />}>
-          <Route path="/" element={<Login session={session}/>} />
+          <Route path="/" element={<Login/>} />
         </Route>
        : 
         <Route element={<MainLayout />}>

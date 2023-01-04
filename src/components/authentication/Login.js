@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Flex from 'components/common/Flex';
 import LoginForm from 'components/authentication/LoginForm';
 
-const Login = ({session}) => (
+const Login = () => (
   <>
     <Flex justifyContent="between" alignItems="center" className="mb-2">
       <h5>Log in</h5>
@@ -11,7 +11,7 @@ const Login = ({session}) => (
         or <Link to="/authentication/register">Create an account</Link>
       </p>
     </Flex>
-    <LoginForm session={session} />
+    <LoginForm />
   </>
 );
 

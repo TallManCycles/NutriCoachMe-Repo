@@ -1,14 +1,12 @@
-import Divider from 'components/common/Divider';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import { Link, Route } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import SocialAuthButtons from './SocialAuthButtons';
 import { supabase } from '../../supabase/supabaseClient'
 import { useNavigate } from 'react-router-dom';
 
-const LoginForm = ({ hasLabel, session }) => {
+const LoginForm = ({ hasLabel }) => {
   // State
   const [formData, setFormData] = useState({
     email: '',

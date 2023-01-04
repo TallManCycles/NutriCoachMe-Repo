@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Button, Form, Row, Col } from 'react-bootstrap';
-import Divider from 'components/common/Divider';
-import SocialAuthButtons from './SocialAuthButtons';
 import { useNavigate } from 'react-router-dom';
 
 import { supabase } from 'supabase/supabaseClient';
@@ -22,11 +20,11 @@ const RegistrationForm = ({ hasLabel }) => {
   const navigation = useNavigate();
 
   // Handler
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
     try {
-      const { data, error } = await supabase.auth.signUp({
+      const { error } = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,
       })

@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import logoutImg from 'assets/img/icons/spot-illustrations/45.png';
 import { supabase } from 'supabase/supabaseClient';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
-const LogoutContent = ({ layout, titleTag: TitleTag }) => {
+const LogoutContent = ({layout, titleTag: TitleTag }) => {
 
   const navigate = useNavigate();
 

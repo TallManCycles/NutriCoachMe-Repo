@@ -1,8 +1,6 @@
 import React from 'react';
-import { Button, Card, Col, Row, Form } from 'react-bootstrap';
+import { Button, Card, Row, Form } from 'react-bootstrap';
 import { toast } from 'react-toastify';
-import { Link } from 'react-router-dom';
-import editing from 'assets/img/icons/spot-illustrations/21.png';
 
 const CheckIn = () => {
 
