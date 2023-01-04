@@ -13,7 +13,7 @@ const LogoutContent = ({layout, titleTag: TitleTag }) => {
 
     useEffect(() => {
       try {
-        supabase.auth.signOut().then(({error}) => {
+        supabase.auth.signOut().then(() => {
           navigate("/authentication/login")
         })
       } catch (error) {

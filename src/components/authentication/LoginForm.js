@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { supabase } from '../../supabase/supabaseClient'
-import { useNavigate } from 'react-router-dom';
 
 const LoginForm = ({ hasLabel }) => {
   // State
@@ -13,8 +12,6 @@ const LoginForm = ({ hasLabel }) => {
     password: '',
     remember: false
   });
-
-  const navigate = useNavigate();
 
   // Handler
   const handleSubmit = async (e) => {
