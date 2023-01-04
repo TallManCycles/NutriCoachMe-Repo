@@ -46,11 +46,13 @@ const Layout = () => {
   const HTMLClassList = document.getElementsByTagName('html')[0].classList;
   useContext(AppContext);
 
+  //Sets the session via supabase
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session)
     })
 
+    //listens to changes via supabase
     supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session)
     })
