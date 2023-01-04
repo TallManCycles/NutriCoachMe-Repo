@@ -29,10 +29,10 @@ const Settings = () => {
         </Col>
         <Col lg={4}>
           <div className="sticky-sidebar">
-            <AccountSettings />
+            {/* <AccountSettings /> */}
             <BillingSettings />
-            <ChangePassword />
-            <DangerZone />
+            {/* <ChangePassword /> */}
+            {/* <DangerZone /> */}
           </div>
         </Col>
       </Row>
