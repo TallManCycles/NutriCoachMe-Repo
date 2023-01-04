@@ -6,12 +6,27 @@ import hp from 'assets/img/logos/hp.png';
 import avatar from 'assets/img/team/2.jpg';
 import Flex from 'components/common/Flex';
 import VerifiedBadge from 'components/common/VerifiedBadge';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import ProfileBanner from '../ProfileBanner';
+import { supabase } from 'supabase/supabaseClient';
 
 const Banner = () => {
+
+  const [user, setUser] = useState([])
+
+  useEffect(async () => {
+    const {data, error} = await supabase.auth.getSession()
+
+    if (!error){
+      setUser(data)
+      console.log(data)
+    }
+
+  },[])
+
+
   const [rightSidedItems] = useState([
     {
       title: 'Google',
@@ -38,7 +53,7 @@ const Banner = () => {
             <h5 className="fs-0 fw-normal">
               Senior Software Engineer at Technext Limited
             </h5>
-            <p className="text-500">New York, USA</p>
+            <p className="text-500">{user.session.user.email}</p>
             <Button variant="falcon-primary" size="sm" className="px-3">
               Following
             </Button>
