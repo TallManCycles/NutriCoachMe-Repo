@@ -27,7 +27,7 @@ const LoginForm = ({ hasLabel }) => {
       })
     } else {
       console.log(error)
-      toast.error(`This email does not exist`, {
+      toast.error(`An error occured ${error}`, {
         theme: 'coloured' })
     }
 
