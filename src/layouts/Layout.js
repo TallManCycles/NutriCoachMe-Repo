@@ -38,7 +38,6 @@ const Layout = () => {
 
     supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session)
-      console.log("Auth state changed")
     })
   }, [])
 
