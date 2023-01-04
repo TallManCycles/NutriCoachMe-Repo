@@ -1,15 +1,16 @@
 export const dashboardRoutes = {
-  label: 'Coaching',
+  label: 'Admin',
   labelDisable: true,
   children: [
     {
-      name: 'Coaching',
+      name: 'Admin',
       active: true,
       icon: 'chart-pie',
       children: [
         {
-          name: 'Default',
+          name: 'Users',
           to: '/',
+          icon: 'user',
           exact: true,
           active: true
         },
@@ -18,7 +19,7 @@ export const dashboardRoutes = {
   ]
 };
 export const appRoutes = {
-  label: 'Contact',
+  label: 'Coaching',
   children: [
     {
       name: 'Check In',
@@ -61,48 +62,39 @@ export const appRoutes = {
 export const pagesRoutes = {
   label: 'Authentication',
   children: [
-    {
-      name: 'Login/Logout',
-      icon: 'lock',
-      active: true,
-      children: [
-            {
-              name: 'Login',
-              to: '/authentication/login',
-              active: true
-            },
-            {
-              name: 'Logout',
-              to: '/authentication/logout',
-              active: true
-            },
-            {
-              name: 'Register',
-              to: '/authentication/register',
-              active: true
-            },
-            {
-              name: 'Forgot password',
-              to: '/authentication/forgot-password',
-              active: true
-            },
-            {
-              name: 'Confirm mail',
-              to: '/authentication/confirm-mail',
-              active: true
-            },
-            {
-              name: 'Reset password',
-              to: '/authentication/reset-password',
-              active: true
-            },
-            {
-              name: 'Lock screen',
-              to: '/authentication/lock-screen',
-              active: true
-            }
-          ]
-        },
+    // {
+      // name: 'Login/Logout',
+      // icon: 'lock',
+      // active: true,
+      // children: [
+            
+      //       {
+      //         name: 'Register',
+      //         to: '/authentication/register',
+      //         active: true
+      //       },
+      //       {
+      //         name: 'Forgot password',
+      //         to: '/authentication/forgot-password',
+      //         active: true
+      //       },
+      //       {
+      //         name: 'Confirm mail',
+      //         to: '/authentication/confirm-mail',
+      //         active: true
+      //       },
+      //       {
+      //         name: 'Reset password',
+      //         to: '/authentication/reset-password',
+      //         active: true
+      //       },
+      //       {
+      //         name: 'Lock screen',
+      //         to: '/authentication/lock-screen',
+      //         active: true
+            // }
+          // ]
+        // },
     {
       name: 'User',
       icon: 'user',
@@ -116,6 +108,16 @@ export const pagesRoutes = {
         {
           name: 'Settings',
           to: '/user/settings',
+          active: true
+        },
+        // {
+        //   name: 'Login',
+        //   to: '/authentication/login',
+        //   active: true
+        // },
+        {
+          name: 'Logout',
+          to: '/authentication/logout',
           active: true
         }
       ]
