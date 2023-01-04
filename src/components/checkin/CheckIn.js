@@ -9,7 +9,8 @@ const CheckIn = () => {
     name: '',
     email: '',
     cravings: '',
-    acheivements: ''
+    acheivements: '',
+    obstacles: ''
   });
 
   const handleFieldChange = e => {
@@ -28,7 +29,9 @@ const CheckIn = () => {
       name: formData.name, 
       email: formData.email,
       cravings: formData.cravings,
-      feeling: formData.acheivements })
+      feeling: formData.acheivements,
+      obstacles: formData.obstacles
+     })
 
     if (!error)
     toast.success(`Successfully sent checkin`, {
@@ -62,6 +65,24 @@ const CheckIn = () => {
           value={formData.name}
           onChange={handleFieldChange}  />
         </Form.Group>
+        <Form.Group className="mb-3" controlId="check-in-success">
+          <Form.Label>How do you FEEL about your accomplished goals over the last 7 days? - Where did you succeed?</Form.Label>
+          <Form.Control 
+          as="textarea" 
+          rows={3}
+          name="acheivements"
+          value={formData.acheivements}
+          onChange={handleFieldChange} />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="obstacles">
+          <Form.Label>What do you BELIEVE to be the obstacles you faced? What took priority? </Form.Label>
+          <Form.Control 
+          as="textarea" 
+          rows={3}
+          name="obstacles"
+          value={formData.obstacles}
+          onChange={handleFieldChange} />
+        </Form.Group>
         <Form.Group>
         <Form.Label>How have your cravings been over the past 7 days?</Form.Label>
           <Form.Range 
@@ -72,15 +93,6 @@ const CheckIn = () => {
             value={formData.cravings}
             onChange={handleFieldChange}
           />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="check-in-success">
-          <Form.Label>How do you FEEL about your accomplished goals over the last 7 days? - Where did you succeed?</Form.Label>
-          <Form.Control 
-          as="textarea" 
-          rows={3}
-          name="acheivements"
-          value={formData.acheivements}
-          onChange={handleFieldChange} />
         </Form.Group>
         <Button variant="primary" type="submit">Submit</Button>
         </Form>
