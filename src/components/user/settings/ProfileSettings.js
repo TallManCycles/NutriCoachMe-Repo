@@ -1,17 +1,57 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, Form, Row } from 'react-bootstrap';
 import FalconCardHeader from 'components/common/FalconCardHeader';
+import { supabase } from 'supabase/supabaseClient';
 
 const ProfileSettings = () => {
   const [formData, setFormData] = useState({
-    firstName: 'Anthony',
-    lastName: 'Hopkins',
-    email: 'anthony@gmail.com',
-    phone: '+44098098304',
-    heading: 'Software Engineer',
-    intro:
-      'Dedicated, passionate, and accomplished Full Stack Developer with 9+ years of progressive experience working as an Independent Contractor for Google and developing and growing my educational social network that helps others learn programming, web design, game development, networking. I’ve acquired a wide depth of knowledge and expertise in using my technical skills in programming, computer science, software development, and mobile app development to developing solutions to help organizations increase productivity, and accelerate business performance. It’s great that we live in an age where we can share so much with technology but I’m but I’m ready for the next phase of my career, with a healthy balance between the virtual world and a workplace where I help others face-to-face. There’s always something new to learn, especially in IT-related fields. People like working with me because I can explain technology to everyone, from staff to executives who need me to tie together the details and the big picture. I can also implement the technologies that successful projects need.'
+    name: 'Anthony',
+    email: 'anthony@gmail.com'
   });
+
+  // const [name,setName] = useState("")
+  // const [email, setEmail] = useState("")
+
+  // const getEmailByUser = async () => {
+  //   const {data, error} = await supabase.auth.getSession();
+
+  //   if (!error) {
+  //   setEmail(data.session.user.email)
+  //   console.log(data.session.user.email) 
+  //   }
+  //   else 
+  //   console.log(error.message)
+
+  // }
+
+  // const getNameByEmail = async () => {
+  //     const {data, error} = await supabase
+  //     .from('clients')
+  //     .select('Name')
+  //     .eq('Email', email)
+
+  //     if (!error && data){
+  //       setName(data)
+  //       console.log(data) }
+  //     else
+  //     console.log(error)
+
+  // }
+
+  // useEffect(async () => {
+
+  //   console.log("use effect starting")
+  //   await getEmailByUser()
+  //   console.log("got email address")
+  //   await getNameByEmail()
+  //   console.log("got name")
+
+
+  //   console.log("setting the form data")
+  //   setFormData({name: name, email: email})
+  //   console.log("finished")
+
+  // },[])
 
   const handleChange = e => {
     setFormData({
@@ -35,19 +75,8 @@ const ProfileSettings = () => {
               <Form.Control
                 type="text"
                 placeholder="First Name"
-                value={formData.firstName}
+                value={formData.name}
                 name="firstName"
-                onChange={handleChange}
-              />
-            </Form.Group>
-
-            <Form.Group as={Col} lg={6} controlId="lastName">
-              <Form.Label>Last Name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Last Name"
-                value={formData.lastName}
-                name="lastName"
                 onChange={handleChange}
               />
             </Form.Group>
@@ -64,7 +93,7 @@ const ProfileSettings = () => {
               />
             </Form.Group>
 
-            <Form.Group as={Col} lg={6} controlId="phone">
+            {/* <Form.Group as={Col} lg={6} controlId="phone">
               <Form.Label>Phone</Form.Label>
               <Form.Control
                 type="text"
@@ -73,10 +102,10 @@ const ProfileSettings = () => {
                 name="phone"
                 onChange={handleChange}
               />
-            </Form.Group>
+            </Form.Group> */}
           </Row>
 
-          <Form.Group className="mb-3" controlId="heading">
+          {/* <Form.Group className="mb-3" controlId="heading">
             <Form.Label>Heading</Form.Label>
             <Form.Control
               type="text"
@@ -97,7 +126,7 @@ const ProfileSettings = () => {
               name="intro"
               onChange={handleChange}
             />
-          </Form.Group>
+          </Form.Group> */}
           <div className="text-end">
             <Button variant="primary" type="submit">
               Update

@@ -14,16 +14,18 @@ import { supabase } from 'supabase/supabaseClient';
 
 const Banner = () => {
 
-  const [user, setUser] = useState([])
+  const [userEmail, setUserEmail] = useState("")
 
   useEffect(async () => {
     const {data, error} = await supabase.auth.getSession()
-
+    
     if (!error){
-      setUser(data)
-      console.log(data)
-    }
-
+      try {
+        setUserEmail(data.session.user.email)
+        console.log(data)
+      } catch (e) {
+        console.log(e.message)
+      }}
   },[])
 
 
@@ -53,7 +55,7 @@ const Banner = () => {
             <h5 className="fs-0 fw-normal">
               Senior Software Engineer at Technext Limited
             </h5>
-            <p className="text-500">{user.session.user.email}</p>
+            <p className="text-500">{!userEmail ? "" : userEmail}</p>
             <Button variant="falcon-primary" size="sm" className="px-3">
               Following
             </Button>
