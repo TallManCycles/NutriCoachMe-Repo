@@ -4,13 +4,13 @@ import { Card, Col, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import corner6 from 'assets/img/icons/spot-illustrations/corner-6.png';
 import FalconCardHeader from 'components/common/FalconCardHeader';
-import IconButton from 'components/common/IconButton';
+// import IconButton from 'components/common/IconButton';
 import Background from 'components/common/Background';
 
 const CourseContents = ({ data }) => {
   return (
     <Card className="mb-3">
-      <FalconCardHeader
+      {/* <FalconCardHeader
         title="This Course Will Teach You"
         titleTag="h5"
         className="bg-light"
@@ -25,7 +25,7 @@ const CourseContents = ({ data }) => {
             Preview
           </IconButton>
         }
-      />
+      /> */}
       <Card.Body className="position-relative">
         <Background image={corner6} className="bg-card d-none d-md-block" />
         <Row className="g-2 fs--1">

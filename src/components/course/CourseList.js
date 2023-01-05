@@ -77,12 +77,12 @@ const CourseList = ({ course }) => {
                       </SoftBadge>
                     ))}
                   </Flex>
-                  <h5 className="fs-0">
-                    <Link to="/e-learning/trainer-profile">{trainer}</Link>
-                  </h5>
+                  {/* <h5 className="fs-0">
+                    {/* <Link to="/e-learning/trainer-profile">{trainer}</Link> */}
+                  {/* </h5> */}
                   <h4 className="mt-3 mt-sm-0 fs-0 fs-lg-1">
                     <Link
-                      to={`/e-learning/course/course-details/${id}`}
+                      to={`/course/course-details/${id}`}
                       className="text-900"
                     >
                       {name}
@@ -134,21 +134,6 @@ const CourseList = ({ course }) => {
                           {isInFavouriteItems(id)
                             ? 'Wishlisted'
                             : 'Add to Wishlist'}
-                        </span>
-                      </Button>
-                      <Button
-                        size="md"
-                        variant="primary"
-                        className="fs--1"
-                        onClick={handleAddToCart}
-                      >
-                        <FontAwesomeIcon
-                          icon={`${
-                            isInCart(id) ? 'shopping-cart' : 'cart-plus'
-                          }`}
-                        />
-                        <span className="ms-1 d-none d-lg-inline">
-                          {isInCart(id) ? 'Added' : 'Add to Cart'}
                         </span>
                       </Button>
                     </Flex>

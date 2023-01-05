@@ -9,8 +9,8 @@ import FalconCardHeader from 'components/common/FalconCardHeader';
 import FalconLink from 'components/common/FalconLink';
 import Flex from 'components/common/Flex';
 import Hoverbox from 'components/common/Hoverbox';
-import IconButton from 'components/common/IconButton';
-import ModalVideoContent from '../../ModalVideoContent';
+// import IconButton from 'components/common/IconButton';
+import ModalVideoContent from '../ModalVideoContent';
 
 const CourseLessonPlan = ({ data }) => {
   return (
@@ -90,15 +90,15 @@ const LessonItem = ({ lesson, isLast }) => {
         {lesson.isLocked ? (
           <FontAwesomeIcon icon="lock" className="fs--1 text-secondary" />
         ) : (
-          <IconButton
-            variant="falcon-default"
-            size="sm"
-            iconAlign="right"
-            icon="chevron-down"
-            iconClassName="ms-1 fs--2"
-          >
-            Take a Peek
-          </IconButton>
+          // <IconButton
+          //   variant="falcon-default"
+          //   size="sm"
+          //   iconAlign="right"
+          //   icon="chevron-down"
+          //   iconClassName="ms-1 fs--2"
+          // >
+          //   Take a Peek
+          // </IconButton>
         )}
       </Flex>
     </>

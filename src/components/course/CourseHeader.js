@@ -73,9 +73,8 @@ const CourseHeader = ({ layout, setShowFilterOffcanvas }) => {
                           handleSortByChange(target.value)
                         }
                       >
-                        <option value="price">Price</option>
-                        <option value="rating">Rating</option>
-                        <option value="review">Review</option>
+                        <option value="newest">Price</option>
+                        <option value="oldest">Rating</option>
                       </Form.Select>
                       <InputGroup.Text
                         as={Button}
@@ -91,7 +90,7 @@ const CourseHeader = ({ layout, setShowFilterOffcanvas }) => {
                   </Col>
                 </Form>
               </Col>
-              <Col xs="auto" className="p-0">
+              {/* <Col xs="auto" className="p-0">
                 <Row className="g-2 align-items-center">
                   <Col xs="auto" className="d-none d-lg-block">
                     <small>View:</small>
@@ -102,7 +101,7 @@ const CourseHeader = ({ layout, setShowFilterOffcanvas }) => {
                       overlay={<Tooltip>Course Grid</Tooltip>}
                     >
                       <Link
-                        to="/e-learning/course/course-grid"
+                        to="/course/course-grid"
                         className={`me-3 ${
                           layout === 'grid' ? 'text-700' : 'text-400 hover-700'
                         }`}
@@ -119,7 +118,7 @@ const CourseHeader = ({ layout, setShowFilterOffcanvas }) => {
                       overlay={<Tooltip>Course List</Tooltip>}
                     >
                       <Link
-                        to="/e-learning/course/course-list"
+                        to="/course/course-list"
                         className={`me-2 ${
                           layout === 'list' ? 'text-700' : 'text-400 hover-700'
                         }`}
@@ -133,7 +132,7 @@ const CourseHeader = ({ layout, setShowFilterOffcanvas }) => {
                     </OverlayTrigger>
                   </Col>
                 </Row>
-              </Col>
+              </Col> */}
             </Row>
           </Col>
         </Row>

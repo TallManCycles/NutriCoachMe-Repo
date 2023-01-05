@@ -19,260 +19,25 @@ export const courseFilters = [
     label: 'Category',
     options: [
       {
-        label: 'Free',
-        icon: 'file-alt',
+        label: 'Welcome Series',
+        icon: 'chart-pie',
         type: 'checkbox',
-        value: 'free course',
-        name: 'free course'
+        value: 'Welcome',
+        name: 'Welcome'
       },
       {
-        label: 'Paid',
-        icon: 'file-invoice-dollar',
+        label: 'Nutrition',
+        icon: 'chart-pie',
         type: 'checkbox',
-        value: 'paid course',
-        name: 'paid course'
+        value: 'nutrition',
+        name: 'Nutrition'
       },
       {
-        label: 'On Sale',
-        icon: 'tags',
-        iconShrink: true,
+        label: 'Mindset',
+        icon: 'chart-pie',
         type: 'checkbox',
-        value: 'on sale',
-        name: 'on sale'
-      }
-    ]
-  },
-  {
-    label: 'Subject',
-    options: [
-      {
-        label: 'Design',
-        icon: 'brush',
-        type: 'checkbox',
-        value: 'design',
-        name: 'design'
-      },
-      {
-        label: 'Web Development',
-        icon: 'globe',
-        type: 'checkbox',
-        value: 'development',
-        name: 'development'
-      },
-      {
-        label: 'Software',
-        icon: 'code',
-        type: 'checkbox',
-        value: 'software',
-        name: 'software'
-      },
-      {
-        label: 'Business',
-        icon: 'balance-scale-left',
-        type: 'checkbox',
-        value: 'business',
-        name: 'business'
-      },
-      {
-        label: 'Marketing',
-        icon: 'comment-dollar',
-        type: 'checkbox',
-        value: 'marketing',
-        name: 'marketing'
-      },
-      {
-        label: 'Self Help',
-        icon: 'hand-holding-water',
-        type: 'checkbox',
-        value: 'self help',
-        name: 'self help'
-      },
-      {
-        label: 'Photography',
-        icon: 'camera-retro',
-        type: 'checkbox',
-        value: 'photograpy',
-        name: 'photograpy'
-      },
-      {
-        label: 'Music',
-        icon: 'music',
-        type: 'checkbox',
-        value: 'music',
-        name: 'music'
-      },
-      {
-        label: 'Writing',
-        icon: 'pen-nib',
-        type: 'checkbox',
-        value: 'writing',
-        name: 'writing'
-      },
-      {
-        label: 'Painting',
-        icon: 'palette',
-        type: 'checkbox',
-        value: 'painting',
-        name: 'painting'
-      },
-      {
-        label: 'Cooking',
-        icon: 'utensils',
-        type: 'checkbox',
-        value: 'cooking',
-        name: 'cooking'
-      },
-      {
-        label: 'Teaching',
-        icon: 'book',
-        type: 'checkbox',
-        value: 'teaching',
-        name: 'teaching'
-      },
-      {
-        label: 'Miscellaneous',
-        icon: 'thumbtack',
-        type: 'checkbox',
-        value: 'misc',
-        name: 'misc'
-      }
-    ]
-  },
-  {
-    label: 'Rating',
-    options: [
-      {
-        label: '4.5 & Up',
-        icon: 'star',
-        type: 'radio',
-        name: 'rating',
-        value: 4.5
-      },
-      {
-        label: '4.0 & Up',
-        icon: 'star',
-        type: 'radio',
-        name: 'rating',
-        value: 4.0
-      },
-      {
-        label: '3.5 & Up',
-        icon: 'star',
-        type: 'radio',
-        name: 'rating',
-        value: 3.5
-      },
-      {
-        label: '3.0 & Up',
-        icon: 'star',
-        type: 'radio',
-        name: 'rating',
-        value: 3.0
-      }
-    ]
-  },
-  {
-    label: 'Proficiency',
-    options: [
-      {
-        label: 'Beginner',
-        svg: chevronUp,
-        type: 'checkbox',
-        value: 'beginner',
-        name: 'beginner'
-      },
-      {
-        label: 'Intermediate',
-        svg: doubleChevronUp,
-        type: 'checkbox',
-        value: 'intermediate',
-        name: 'intermediate'
-      },
-      {
-        label: 'Professional',
-        svg: tripleChevronUp,
-        type: 'checkbox',
-        value: 'professional',
-        name: 'professional'
-      },
-      {
-        label: 'Master',
-        icon: 'star',
-        type: 'checkbox',
-        value: 'master',
-        name: 'master'
-      },
-      {
-        label: 'Everyone',
-        icon: 'users',
-        type: 'checkbox',
-        value: 'everyone',
-        name: 'everyone'
-      }
-    ]
-  },
-  {
-    label: 'Language',
-    options: [
-      {
-        label: 'English',
-        type: 'checkbox',
-        selected: true,
-        value: 'english',
-        name: 'english'
-      },
-      {
-        label: 'Spanish',
-        type: 'checkbox',
-        value: 'spanish',
-        name: 'spanish'
-      },
-      {
-        label: 'French',
-        type: 'checkbox',
-        value: 'french',
-        name: 'french'
-      },
-      {
-        label: 'German',
-        type: 'checkbox',
-        value: 'german',
-        name: 'german'
-      },
-      {
-        label: 'Bengali',
-        type: 'checkbox',
-        value: 'bengali',
-        name: 'bengali'
-      },
-      {
-        label: 'Hindi',
-        type: 'checkbox',
-        value: 'hindi',
-        name: 'hindi'
-      },
-      {
-        label: 'Arabic',
-        type: 'checkbox',
-        value: 'arabic',
-        name: 'arabic'
-      }
-    ]
-  },
-  {
-    label: 'Enrolled Courses',
-    options: [
-      {
-        label: 'Show',
-        name: 'enrolledCourses',
-        type: 'radio',
-        value: 'all courses'
-      },
-      {
-        label: 'Dont Show',
-        name: 'enrolledCourses',
-        type: 'radio',
-        value: 'new courses'
+        value: 'mindset',
+        name: 'mindset'
       }
     ]
   }
@@ -327,19 +92,21 @@ export const courseData = [
   {
     id: 'CN000001',
     name: 'Script Writing Masterclass: Introdution to Industry Cliches',
-    price: 69.99,
+    price: 39.99,
     oldPrice: 139.99,
     excerpt:
       'Explore all the advanced design tools like Photoshop, Illustrator, Krita, Procreate, & Inkscape; trace the evolution of graphic design with us, from the first breakthrough of image development to today’s AI assisted designs. Begin your visual language journey with these advanced design tools.',
     trainer: 'Bill Finger',
+    excerpt:
+      'Explore all the advanced design tools like Photoshop, Illustrator, Krita, Procreate, & Inkscape; trace the evolution of graphic design with us, from the first breakthrough of image development to today’s AI assisted designs. Begin your visual language journey with these advanced design tools.',
     thumbnail: {
       image: course1,
       video: beachVideo,
       videoPoster: beachPoster
     },
-    totalEnrolled: 92632,
-    rating: 4.8,
-    review: 78259,
+    totalEnrolled: 92603,
+    rating: 4.9,
+    review: 34567,
     tags: [tags.writing, tags.topTrainer, tags.editorsChoice]
   },
   {

@@ -35,6 +35,7 @@ export const appRoutes = {
     },
     {
       name: 'Learning',
+      icon: 'book',
       to: '/course/course-grid',
       active: true
     },

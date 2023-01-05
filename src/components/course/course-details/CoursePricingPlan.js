@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Card, Col, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import useVisibilityObserver from 'hooks/useVisibilityObserver';
+// import useVisibilityObserver from 'hooks/useVisibilityObserver';
 import FalconCardHeader from 'components/common/FalconCardHeader';
 import Flex from 'components/common/Flex';
 import Bottombar from './Bottombar';

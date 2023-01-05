@@ -36,8 +36,11 @@ import Settings from 'components/user/settings/Settings';
 import { supabase } from 'supabase/supabaseClient'
 
 //Video Call link
-import Calendar from 'components/app/Calendar';
+import EmbedFrame from 'components/app/EmbedFrame';
+
+//Courses
 import Courses from 'components/course/Courses';
+import CourseDetails from 'components/course/course-details';
 // import Chat from 'components/app/chat/Chat';
 
 const Layout = () => {
@@ -117,12 +120,26 @@ const Layout = () => {
        <Route element={<MainLayout />}>
           <Route path="/" element={<Main />} />
 
-          <Route path="app/calendar" element={<Calendar/>} />
+          <Route path="app/calendar" element={<EmbedFrame source={"https://calendly.com/fatforweightloss/monthly-client-book-in-consultation"}/>} />
 
           <Route path="user/profile" element={<Profile />} />
           <Route path="user/settings" element={<Settings />} />
 
-          <Route path="course/:courseLayout" element={<Courses />} />
+
+          {/* Learning Link For Time Being */}
+          <Route path="course/course-grid" element={<EmbedFrame source={"https://fatforweightloss.thrivecart.com/l/11-nutrition-coaching/"}/>} />
+
+
+          {/* Native Course Links */}
+          {/* <Route path="course/:courseLayout" element={<Courses />} />
+          <Route
+            path="course/course-details"
+            element={<CourseDetails />}
+          />
+          <Route
+            path="course/course-details/:courseId"
+            element={<CourseDetails />}
+          /> */}
 
           {/* <Route path="app/chat" element={<Chat />} /> */}
 

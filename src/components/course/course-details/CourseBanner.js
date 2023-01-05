@@ -7,9 +7,9 @@ import beach from 'assets/video/beach.mp4';
 import beachPoster from 'assets/video/beach.jpg';
 import Background from 'components/common/Background';
 import { Link } from 'react-router-dom';
-import StarRating from 'components/common/StarRating';
+// import StarRating from 'components/common/StarRating';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import ModalVideoContent from '../../ModalVideoContent';
+import ModalVideoContent from '../ModalVideoContent';
 
 const CourseBanner = ({ course }) => {
   const [showModal, setShowModal] = useState(false);
@@ -49,8 +49,8 @@ const CourseBanner = ({ course }) => {
                 </h6>
                 <h2 className="fw-bold text-white">{course.name}</h2>
                 <p className="text-white fw-semi-bold fs--1">
-                  <span className="me-1">{course.rating}</span>
-                  <StarRating readonly rating={course.rating} />
+                  {/* <span className="me-1">{course.rating}</span>
+                  <StarRating readonly rating={course.rating} /> */}
                   <span className="text-info ms-2">
                     ({course.review.toLocaleString()} reviews)
                   </span>

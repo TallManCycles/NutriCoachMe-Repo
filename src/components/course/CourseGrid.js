@@ -65,75 +65,16 @@ const CourseGrid = ({ course }) => {
               </Hoverbox.Content>
             </Hoverbox>
             <div className="p-3">
-              <h5 className="fs-0 mb-2">
+              {/* <h5 className="fs-0 mb-2">
                 <Link
-                  to={`/e-learning/course/course-details/${id}`}
+                  to={`/course/course-details/${id}`}
                   className="text-dark"
                 >
                   {name}
                 </Link>
-              </h5>
-              <h5 className="fs-0">
-                <Link to="/e-learning/trainer-profile">{trainer}</Link>
-              </h5>
+              </h5> */}
             </div>
           </div>
-          <Row className="g-0 mb-3 align-items-end">
-            <Col className="ps-3">
-              <h4 className="fs-1 text-warning d-flex align-items-center">
-                <span>${price}</span>
-                {oldPrice && (
-                  <del className="ms-2 fs--1 text-700">${oldPrice}</del>
-                )}
-              </h4>
-              <p className="mb-0 fs--1 text-800">
-                {totalEnrolled.toLocaleString()} Enrolled
-              </p>
-            </Col>
-            <Col xs="auto" className="pe-3">
-              <OverlayTrigger
-                placement="top"
-                overlay={
-                  <Tooltip>
-                    {isInFavouriteItems(id)
-                      ? 'Remove from Wishlist'
-                      : 'Add to Wishlist'}
-                  </Tooltip>
-                }
-              >
-                <Button
-                  variant="falcon-default"
-                  size="sm"
-                  onClick={handleFavouriteClick}
-                  className="me-2 hover-danger"
-                >
-                  <FontAwesomeIcon
-                    icon={isInFavouriteItems(id) ? 'heart' : ['far', 'heart']}
-                    className={`${isInFavouriteItems(id) && 'text-danger'}`}
-                    transform="down-1"
-                  />
-                </Button>
-              </OverlayTrigger>
-              <OverlayTrigger
-                placement="top"
-                overlay={
-                  <Tooltip>
-                    {isInCart(id) ? 'Remove from Cart' : 'Add to Cart'}
-                  </Tooltip>
-                }
-              >
-                <Button
-                  variant={`${isInCart(id) ? 'primary' : 'falcon-default'}`}
-                  size="sm"
-                  onClick={handleAddToCart}
-                >
-                  <FontAwesomeIcon
-                    icon={isInCart(id) ? 'shopping-cart' : 'cart-plus'}
-                  />
-                </Button>
-              </OverlayTrigger>
-            </Col>
-          </Row>
         </Card.Body>
       </Card>
     </>
