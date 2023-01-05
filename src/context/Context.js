@@ -3,6 +3,8 @@ import { settings } from 'config';
 
 const AppContext = createContext(settings);
 
+export const CourseContext = createContext({ courses: [], primaryCourses: [] });
+
 // export const EmailContext = createContext({ emails: [] });
 
 // export const ProductContext = createContext({ products: [] });

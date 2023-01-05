@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Card, Tab, Row, Col, Nav, Button } from 'react-bootstrap';
 import FalconCardBody from './FalconCardBody';
 import classNames from 'classnames';
-import { HashLink } from 'react-router-hash-link';
+// import { HashLink } from 'react-router-hash-link';
 import Flex from './Flex';
 import { useLocation } from 'react-router-dom';
 import { camelize } from '../../helpers/utils';
@@ -50,25 +50,25 @@ const FalconComponentCardHeader = ({
               <h5 className="mb-0 hover-actions-trigger" id={camelize(title)}>
                 {isRTL ? (
                   <>
-                    <HashLink
+                    {/* <HashLink
                       to={`${location.pathname}#${camelize(title)}`}
                       className="hover-actions ps-2"
                       style={{ top: 0, left: '-25px' }}
                     >
                       #
-                    </HashLink>
+                    </HashLink> */}
                     {title}
                   </>
                 ) : (
                   <>
                     {title}
-                    <HashLink
+                    {/* <HashLink
                       to={`${location.pathname}#${camelize(title)}`}
                       className="hover-actions ps-2"
                       style={{ top: 0, right: '-25px' }}
                     >
                       #
-                    </HashLink>
+                    </HashLink> */}
                   </>
                 )}
               </h5>

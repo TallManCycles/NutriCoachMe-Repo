@@ -34,6 +34,11 @@ export const appRoutes = {
       active: true
     },
     {
+      name: 'Learning',
+      to: '/course/course-grid',
+      active: true
+    },
+    {
       name: 'Chat',
       icon: 'comments',
       to: '/app/chat',

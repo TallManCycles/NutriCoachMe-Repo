@@ -4,6 +4,9 @@ import NavbarTop from 'components/navbar/top/NavbarTop';
 import NavbarVertical from 'components/navbar/vertical/NavbarVertical';
 import AppContext from 'context/Context';
 import Footer from 'components/footer/Footer';
+import classNames from 'classnames';
+
+import CourseProvider from 'components/course/CourseProvider';
 
 const MainLayout = () => {
   // NOTE: MainLayout Structure changed for shorter version of Falcon react.
@@ -37,11 +40,20 @@ const MainLayout = () => {
         <NavbarVertical />
       )}
 
-      <div className="content">
+        <CourseProvider>
+          <div className={classNames('content', { 'pb-0': false })}>
+            <NavbarTop />
+            {/*------ Main Routes ------*/}
+            <Outlet />
+            <Footer />
+          </div>
+        </CourseProvider>
+
+      {/* <div className="content">
         <NavbarTop />
         <Outlet />
         <Footer />
-      </div>
+      </div> */}
     </div>
   );
 };

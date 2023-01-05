@@ -37,6 +37,7 @@ import { supabase } from 'supabase/supabaseClient'
 
 //Video Call link
 import Calendar from 'components/app/Calendar';
+import Courses from 'components/course/Courses';
 // import Chat from 'components/app/chat/Chat';
 
 const Layout = () => {
@@ -120,6 +121,8 @@ const Layout = () => {
 
           <Route path="user/profile" element={<Profile />} />
           <Route path="user/settings" element={<Settings />} />
+
+          <Route path="course/:courseLayout" element={<Courses />} />
 
           {/* <Route path="app/chat" element={<Chat />} /> */}
 
