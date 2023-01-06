@@ -14,6 +14,13 @@ export const dashboardRoutes = {
           exact: true,
           active: true
         },
+        {
+          name: 'Create Workout',
+          to: 'admin/createworkout',
+          icon: 'user',
+          exact: true,
+          active: true
+        },
       ]
     }
   ]
@@ -37,6 +44,12 @@ export const appRoutes = {
       name: 'Learning',
       icon: 'book',
       to: '/course/course-grid',
+      active: true
+    },
+    {
+      name: 'Workouts',
+      icon: 'book',
+      to: '/workouts/WorkoutLayout',
       active: true
     },
     {

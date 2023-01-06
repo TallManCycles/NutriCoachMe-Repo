@@ -41,6 +41,8 @@ import EmbedFrame from 'components/app/EmbedFrame';
 //Courses
 import Courses from 'components/course/Courses';
 import CourseDetails from 'components/course/course-details';
+import CreateWorkout from 'components/admin/CreatWorkouts';
+import WorkoutLayout from 'components/workouts/WorkoutLayout';
 // import Chat from 'components/app/chat/Chat';
 
 const Layout = () => {
@@ -120,6 +122,8 @@ const Layout = () => {
        <Route element={<MainLayout />}>
           <Route path="/" element={<Main />} />
 
+          <Route path="admin/createworkout" element={<CreateWorkout />} />
+
           <Route path="app/calendar" element={<EmbedFrame source={"https://calendly.com/fatforweightloss/monthly-client-book-in-consultation"}/>} />
 
           <Route path="user/profile" element={<Profile />} />
@@ -144,6 +148,8 @@ const Layout = () => {
           /> */}
 
           {/* <Route path="app/chat" element={<Chat />} /> */}
+
+          <Route path="workouts/workoutlayout" element={<WorkoutLayout />} />
 
           <Route path="/checkin/checkin" element={<CheckIn />} />
           <Route path="pages/starter" element={<Starter />} />
