@@ -129,6 +129,8 @@ const Layout = () => {
           {/* Learning Link For Time Being */}
           <Route path="course/course-grid" element={<EmbedFrame source={"https://fatforweightloss.thrivecart.com/l/11-nutrition-coaching/"}/>} />
 
+          <Route path='app/chat' element={<EmbedFrame source={"https://t.me/+3kB3_g1rhY9hMGU1"} />} />
+
 
           {/* Native Course Links */}
           {/* <Route path="course/:courseLayout" element={<Courses />} />
@@ -149,7 +151,7 @@ const Layout = () => {
         }
 
         </>
-        <Route path="*" element={<Navigate to="/errors/404" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       {/* <SettingsToggle /> */}
       <SettingsPanel />

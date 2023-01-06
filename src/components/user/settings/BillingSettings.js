@@ -10,7 +10,7 @@ const BillingSettings = () => {
       <Card.Body className="bg-light border-top">
         <h5>Payment</h5>
         <p className="fs-0">Active Subscription</p>
-        <Button as={Link} variant="falcon-default" size="sm" to="mailto:support@fatforweightloss.com.au">
+        <Button href='https://form.jotform.com/fatforweightloss/coaching-change-request' variant="falcon-default" size="sm">
           Cancel Subscription
         </Button>
       </Card.Body>
