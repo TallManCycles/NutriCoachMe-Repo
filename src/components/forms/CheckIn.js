@@ -5,6 +5,8 @@ import { supabase } from 'supabase/supabaseClient';
 import { useDropzone } from 'react-dropzone';
 import Flex from 'components/common/Flex';
 import cloudUpload from 'assets/img/icons/cloud-upload.svg';
+import Rating from 'react-rating'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const CheckIn = () => {
 
@@ -44,6 +46,7 @@ const CheckIn = () => {
       ...formData,
       [e.target.name]: e.target.value
     });
+    handleTextboxBlur();
   };
 
   const handleTextboxBlur = () => {
@@ -147,6 +150,18 @@ const CheckIn = () => {
         {/* Energy */}
         <Form.Group className="mb-3" controlId="energy">
         <Form.Label>What is your ENERGY like on a daily basis? (low to high)</Form.Label>
+          <Rating
+            style={{width: '100%'}}
+            stop={5}
+            fractions={1}
+            initialRating={4}
+            fullSymbol={
+              <FontAwesomeIcon icon="circle" className="text-error fs-2" />
+            }
+            emptySymbol={
+              <FontAwesomeIcon icon={['far','circle']} className="text-300 fs-2" />
+            }
+          />
           <Form.Range 
             min='0'
             max='5'

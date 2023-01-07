@@ -40,7 +40,103 @@ export const courseFilters = [
         name: 'mindset'
       }
     ]
-  }
+  }, {
+  
+  label: 'Subject',
+  options: [
+    {
+      label: 'Design',
+      icon: 'brush',
+      type: 'checkbox',
+      value: 'design',
+      name: 'design'
+    },
+    {
+      label: 'Web Development',
+      icon: 'globe',
+      type: 'checkbox',
+      value: 'development',
+      name: 'development'
+    },
+    {
+      label: 'Software',
+      icon: 'code',
+      type: 'checkbox',
+      value: 'software',
+      name: 'software'
+    },
+    {
+      label: 'Business',
+      icon: 'balance-scale-left',
+      type: 'checkbox',
+      value: 'business',
+      name: 'business'
+    },
+    {
+      label: 'Marketing',
+      icon: 'comment-dollar',
+      type: 'checkbox',
+      value: 'marketing',
+      name: 'marketing'
+    },
+    {
+      label: 'Self Help',
+      icon: 'hand-holding-water',
+      type: 'checkbox',
+      value: 'self help',
+      name: 'self help'
+    },
+    {
+      label: 'Photography',
+      icon: 'camera-retro',
+      type: 'checkbox',
+      value: 'photograpy',
+      name: 'photograpy'
+    },
+    {
+      label: 'Music',
+      icon: 'music',
+      type: 'checkbox',
+      value: 'music',
+      name: 'music'
+    },
+    {
+      label: 'Writing',
+      icon: 'pen-nib',
+      type: 'checkbox',
+      value: 'writing',
+      name: 'writing'
+    },
+    {
+      label: 'Painting',
+      icon: 'palette',
+      type: 'checkbox',
+      value: 'painting',
+      name: 'painting'
+    },
+    {
+      label: 'Cooking',
+      icon: 'utensils',
+      type: 'checkbox',
+      value: 'cooking',
+      name: 'cooking'
+    },
+    {
+      label: 'Teaching',
+      icon: 'book',
+      type: 'checkbox',
+      value: 'teaching',
+      name: 'teaching'
+    },
+    {
+      label: 'Miscellaneous',
+      icon: 'thumbtack',
+      type: 'checkbox',
+      value: 'misc',
+      name: 'misc'
+    }
+  ]
+}
 ];
 
 const tags = {
@@ -107,7 +203,7 @@ export const courseData = [
     totalEnrolled: 92603,
     rating: 4.9,
     review: 34567,
-    tags: [tags.writing, tags.topTrainer, tags.editorsChoice]
+    tags: [tags.design, tags.topTrainer, tags.editorsChoice]
   },
   {
     id: 'CN000002',
