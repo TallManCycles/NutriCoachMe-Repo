@@ -122,7 +122,7 @@ const Courses = () => {
             <Card>
               <Card.Body>
                 <Row className="g-3 flex-center justify-content-sm-between">
-                  <Col xs="auto" as={Flex} alignItems="center">
+                  <Col m="auto" as={Flex} alignItems="center">
                     <small className="d-none d-lg-block me-2">Show:</small>
                     <Form.Select
                       size="sm"

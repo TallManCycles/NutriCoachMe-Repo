@@ -91,7 +91,7 @@ const tags = {
 export const courseData = [
   {
     id: 'CN000001',
-    name: 'Script Writing Masterclass: Introdution to Industry Cliches',
+    name: 'Seasons Of Nutrition',
     price: 39.99,
     oldPrice: 139.99,
     excerpt:
@@ -101,7 +101,7 @@ export const courseData = [
       'Explore all the advanced design tools like Photoshop, Illustrator, Krita, Procreate, & Inkscape; trace the evolution of graphic design with us, from the first breakthrough of image development to today’s AI assisted designs. Begin your visual language journey with these advanced design tools.',
     thumbnail: {
       image: course1,
-      video: beachVideo,
+      video: "https://streamable.com/e/0le0pz",
       videoPoster: beachPoster
     },
     totalEnrolled: 92603,
@@ -119,7 +119,7 @@ export const courseData = [
     trainer: 'Bill Finger',
     thumbnail: {
       image: course2,
-      video: beachVideo,
+      video: "https://streamable.com/e/dinfcr",
       videoPoster: beachPoster
     },
     totalEnrolled: 92603,

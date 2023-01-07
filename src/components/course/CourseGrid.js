@@ -13,10 +13,11 @@ import Flex from 'components/common/Flex';
 import playIcon from 'assets/img/icons/play.svg';
 import Hoverbox from 'components/common/Hoverbox';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import ModalVideoContent from './ModalVideoContent';
 import { Link } from 'react-router-dom';
 import { CourseContext } from 'context/Context';
 import useCourses from 'hooks/useCourses';
+import ModalVideoContent from './ModalVideoContent';
+import ModalIframeContent from './ModalIframeContent';
 
 const CourseGrid = ({ course }) => {
   const [showModal, setShowModal] = useState(false);
@@ -34,9 +35,10 @@ const CourseGrid = ({ course }) => {
   const { isInFavouriteItems, isInCart } = useContext(CourseContext);
 
   const { handleAddToCart, handleFavouriteClick } = useCourses(course);
+
   return (
     <>
-      <ModalVideoContent
+      <ModalIframeContent
         show={showModal}
         setShow={setShowModal}
         attachment={{ image: videoPoster, src: video }}
@@ -48,33 +50,12 @@ const CourseGrid = ({ course }) => {
           justifyContent="between"
           className="p-0"
         >
-          <div>
-            <Hoverbox
-              onClick={() => setShowModal(true)}
-              className="text-center"
-            >
-              <Button
-                variant="link"
-                onClick={() => setShowModal(true)}
-                className="p-0 border-0"
-              >
-                <Image src={image} alt="" className="w-100 h-100 fit-cover" />
-              </Button>
-              <Hoverbox.Content className="flex-center pe-none bg-holder overlay overlay-2">
-                <Image src={playIcon} width={60} alt="" className="z-index-1" />
-              </Hoverbox.Content>
-            </Hoverbox>
+          <iframe className="d-block" src={video} width={'100%'} height={200} allowFullScreen></iframe>
             <div className="p-3">
-              {/* <h5 className="fs-0 mb-2">
-                <Link
-                  to={`/course/course-details/${id}`}
-                  className="text-dark"
-                >
-                  {name}
-                </Link>
-              </h5> */}
+              <h5 className="fs-0 mb-2">
+                {name}
+              </h5>
             </div>
-          </div>
         </Card.Body>
       </Card>
     </>

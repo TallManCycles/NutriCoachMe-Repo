@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 // import StarRating from 'components/common/StarRating';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ModalVideoContent from '../ModalVideoContent';
+import ModalIframeContent from '../ModalIframeContent';
 
 const CourseBanner = ({ course }) => {
   const [showModal, setShowModal] = useState(false);
@@ -33,10 +34,10 @@ const CourseBanner = ({ course }) => {
                   >
                     <Image src={playicon} alt="" width={60} />
                   </div>
-                  <ModalVideoContent
+                  <ModalIframeContent
                     show={showModal}
                     setShow={setShowModal}
-                    attachment={{ image: beachPoster, src: beach }}
+                    attachment={{ image: course.thumbnail.image, src: course.thumbnail.src }}
                   />
                 </div>
               </Col>

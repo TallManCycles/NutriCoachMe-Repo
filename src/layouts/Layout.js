@@ -131,13 +131,13 @@ const Layout = () => {
 
 
           {/* Learning Link For Time Being */}
-          <Route path="course/course-grid" element={<EmbedFrame source={"https://fatforweightloss.thrivecart.com/l/11-nutrition-coaching/"}/>} />
+          {/* <Route path="course/course-grid" element={<EmbedFrame source={"https://fatforweightloss.thrivecart.com/l/11-nutrition-coaching/"}/>} /> */}
 
           <Route path='app/chat' element={<EmbedFrame source={"https://t.me/+3kB3_g1rhY9hMGU1"} />} />
 
 
           {/* Native Course Links */}
-          {/* <Route path="course/:courseLayout" element={<Courses />} />
+          <Route path="course/:courseLayout" element={<Courses />} />
           <Route
             path="course/course-details"
             element={<CourseDetails />}
@@ -145,7 +145,7 @@ const Layout = () => {
           <Route
             path="course/course-details/:courseId"
             element={<CourseDetails />}
-          /> */}
+          />
 
           {/* <Route path="app/chat" element={<Chat />} /> */}
 
