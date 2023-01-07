@@ -32,7 +32,7 @@ const CheckIn = () => {
   //File uploader
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
   const [user, setUser] = useState('')
-  const textboxRef = useRef(null);
+  const viewRef = useRef(null);
 
   const files = acceptedFiles.map(file => (
     <li key={file.path}>
@@ -48,9 +48,12 @@ const CheckIn = () => {
     });
   };
 
-  const handleTextboxBlur = (event) => {
-    // textboxRef.current.blur();
-    event.preventDefault();
+  const disableAutoScroll = () => {
+    viewRef.current.scrollTo({
+      behavior: "auto",
+      left: viewRef.current.scrollLeft,
+      top: viewRef.current.scrollTop
+    });
   };
 
   const handleSubmit = async e => {
@@ -108,8 +111,8 @@ const CheckIn = () => {
         <Form.Group className="mb-3" controlId="check-in-success">
           <Form.Label>How do you FEEL about your accomplished goals over the last 7 days? - Where did you succeed?</Form.Label>
           <Form.Control 
-          ref={textboxRef}
-          onBlur={handleTextboxBlur}
+          ref={viewRef}
+          onScroll={disableAutoScroll}
           as="textarea" 
           required={true}
           rows={3}
@@ -122,8 +125,6 @@ const CheckIn = () => {
         <Form.Group className="mb-3" controlId="obstacles">
           <Form.Label>What do you BELIEVE to be the obstacles you faced? What took priority? </Form.Label>
           <Form.Control 
-          ref={textboxRef}
-          onBlur={handleTextboxBlur}
           as="textarea" 
           required={true}
           rows={3}
@@ -135,9 +136,7 @@ const CheckIn = () => {
         {/* Activity */}
         <Form.Group className="mb-3" controlId="activity">
           <Form.Label>How active have you been this week? (please add #workouts, average step count or minutes walked) </Form.Label>
-          <Form.Control
-          ref={textboxRef}
-          onBlur={handleTextboxBlur} 
+          <Form.Control 
           type="text" 
           rows={3}
           required={true}
@@ -181,7 +180,6 @@ const CheckIn = () => {
             name="stress"
             value={formData.stress}
             onChange={handleFieldChange}
-            onTouchEnd={handleTextboxBlur}
           />
         </Form.Group>
 
@@ -254,8 +252,6 @@ const CheckIn = () => {
         <Form.Group className="mb-3" controlId="waist">
           <Form.Label>Please add your WAIST measurement (cm or inches)</Form.Label>
           <Form.Control 
-          ref={textboxRef}
-          onBlur={handleTextboxBlur}
           type="number"
           rows={1}
           name="waist"
@@ -268,8 +264,6 @@ const CheckIn = () => {
         <Form.Group className="mb-3" controlId="hips">
           <Form.Label>Please add your HIPS measurement (cm or inches)</Form.Label>
           <Form.Control 
-          ref={textboxRef}
-          onBlur={handleTextboxBlur}
           type="number" 
           rows={1}
           name="hips"
@@ -282,8 +276,6 @@ const CheckIn = () => {
         <Form.Group className="mb-3" controlId="weight">
           <Form.Label>Enter today's weight (if not weighing, type 0)</Form.Label>
           <Form.Control 
-          ref={textboxRef}
-          onBlur={handleTextboxBlur}
           type="number" 
           rows={1}
           name="weight"
@@ -296,8 +288,6 @@ const CheckIn = () => {
         <Form.Group className="mb-3" controlId="events">
           <Form.Label>Are there any known events/holidays/challenges coming up? - (Please detail upcoming dates and durations if you haven't already notified me) </Form.Label>
           <Form.Control 
-          ref={textboxRef}
-          onBlur={handleTextboxBlur}
           as="textarea" 
           rows={3}
           name="events"
