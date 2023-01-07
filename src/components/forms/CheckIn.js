@@ -46,12 +46,11 @@ const CheckIn = () => {
       ...formData,
       [e.target.name]: e.target.value
     });
-    handleTextboxBlur();
   };
 
-  const handleTextboxBlur = () => {
-    textboxRef.current.blur();
-    console.log("handled")
+  const handleTextboxBlur = (event) => {
+    // textboxRef.current.blur();
+    event.preventDefault();
   };
 
   const handleSubmit = async e => {
