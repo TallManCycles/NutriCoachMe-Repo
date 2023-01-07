@@ -26,7 +26,7 @@ import Login from 'components/authentication/Login';
 import Main from 'components/pages/Main';
 
 //Check In Screen
-import CheckIn from 'components/checkin/CheckIn';
+import CheckIn from 'components/forms/CheckIn';
 
 //User Settings
 import Profile from 'components/user/profile/Profile';
@@ -151,7 +151,7 @@ const Layout = () => {
 
           <Route path="workouts/workoutlayout" element={<WorkoutLayout />} />
 
-          <Route path="/checkin/checkin" element={<CheckIn />} />
+          <Route path="/forms/checkin" element={<CheckIn />} />
           <Route path="pages/starter" element={<Starter />} />
         </Route>
         }

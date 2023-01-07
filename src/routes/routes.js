@@ -31,7 +31,7 @@ export const appRoutes = {
     {
       name: 'Check In',
       icon: 'file-alt',
-      to: '/checkin/checkin',
+      to: '/forms/checkin',
       active: true
     },
     {
