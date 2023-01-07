@@ -182,6 +182,7 @@ const CheckIn = () => {
             name="stress"
             value={formData.stress}
             onChange={handleFieldChange}
+            onTouchEnd={handleTextboxBlur}
           />
         </Form.Group>
 
