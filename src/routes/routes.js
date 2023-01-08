@@ -29,6 +29,12 @@ export const appRoutes = {
   label: 'Coaching',
   children: [
     {
+      name: 'Inital Questionaire',
+      icon: 'file-alt',
+      to: '/forms/onboard',
+      active: true
+    },
+    {
       name: 'Check In',
       icon: 'file-alt',
       to: '/forms/checkin',

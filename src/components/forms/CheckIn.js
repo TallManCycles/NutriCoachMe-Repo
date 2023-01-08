@@ -148,20 +148,9 @@ const CheckIn = () => {
         {/* Energy */}
         <Form.Group className="mb-3" controlId="energy">
         <Form.Label>What is your ENERGY like on a daily basis? (low to high)</Form.Label>
-          <Rating
-            style={{width: '100%'}}
-            stop={5}
-            fractions={1}
-            initialRating={4}
-            fullSymbol={
-              <FontAwesomeIcon icon="circle" className="text-error fs-2" />
-            }
-            emptySymbol={
-              <FontAwesomeIcon icon={['far','circle']} className="text-300 fs-2" />
-            }
-          />
           <Form.Range 
             min='0'
+            
             max='5'
             step="1"
             name="energy"

@@ -124,6 +124,8 @@ const Layout = () => {
 
           <Route path="admin/createworkout" element={<CreateWorkout />} />
 
+          <Route path='forms/onboard' element={<EmbedFrame source={"https://form.jotform.com/fatforweightloss/new-client-intake-form"} />} />
+
           <Route path="app/calendar" element={<EmbedFrame source={"https://calendly.com/fatforweightloss/monthly-client-book-in-consultation"}/>} />
 
           <Route path="user/profile" element={<Profile />} />
@@ -153,11 +155,12 @@ const Layout = () => {
 
           <Route path="/forms/checkin" element={<CheckIn />} />
           <Route path="pages/starter" element={<Starter />} />
+
+          <Route path="*" element={<Navigate to="/errors/404" replace />} />
         </Route>
         }
-
         </>
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<Navigate to="/errors/404" replace />} />
         </Routes>
       {/* <SettingsToggle /> */}
       <SettingsPanel />
