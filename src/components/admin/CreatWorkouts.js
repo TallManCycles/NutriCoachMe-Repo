@@ -13,6 +13,7 @@ const CreateWorkout = () => {
       });
 
       const [clients, setClients] = useState([])
+      const [workout, setWorkouts] = useState([])
       const [isloading, SetIsLoading] = useState(false)
 
       useEffect(() => {
@@ -28,16 +29,40 @@ const CreateWorkout = () => {
           ...formData,
           [e.target.name]: e.target.value
         });
+
         console.log(e.target.name, e.target.value)
       };
+
+      const handleGetWorkout = async e => {
+
+        SetIsLoading(true)
+
+        const {error, data} = await supabase.from('workouts').select().eq('user_id', formData.id).maybeSingle()
+
+        if (data) {
+          setFormData(data)
+          toast.success("Current workouts loaded", {
+            theme: 'colored'
+          });
+        } else {
+          toast.error("no workouts found for this user", {
+            theme: 'colored'
+          }); 
+        }
+
+        SetIsLoading(false)
+      }
+
+      async function createWorkout(isDelete) {
+        
+      }
     
       const handleSubmit = async e => {
+
         e.preventDefault();
 
         SetIsLoading(true);
 
-        console.log(formData)
-    
         const { error } = await supabase
         .from('workouts')
         .insert({ 
@@ -45,15 +70,14 @@ const CreateWorkout = () => {
           instruction: formData.instruction,
           user_id: formData.id
          })
-    
-        if (!error)
-        toast.success(`Successfully created workout`, {
-          theme: 'colored'
-        }); 
-        else 
-        toast.error(`Something went wrong ${error.message}`, {
-          theme: 'colored'
-        })
+         if (!error)
+          toast.success(`Successfully created workout`, {
+            theme: 'colored'
+          }); 
+          else 
+          toast.error(`Something went wrong ${error.message}`, {
+            theme: 'colored'
+          })
 
         SetIsLoading(false)
       };
@@ -95,6 +119,7 @@ const CreateWorkout = () => {
             aria-label="client"
             name="id"
             onChange={handleFieldChange}>
+              <option>Select A Client</option>
               {clients.map(client => (
                 <option key={client.id} value={client.id}>
                   {client.email}
@@ -103,7 +128,13 @@ const CreateWorkout = () => {
             </Form.Select>
             </Form.Group>
     
-            <Button variant="primary" size="lg" type="submit" disabled={isloading}>Create</Button>
+            <Form.Group>
+              <Button variant="primary" size="lg" type="submit" disabled={isloading}>Create</Button>
+              {/* <Button variant="error" onClick={deleteWorkout} disabled={isloading}>Delete</Button> */}
+            </Form.Group>
+            <Form.Group>
+              <Button variant="secondary" onClick={handleGetWorkout} disabled={isloading}>Get Current Workout</Button>
+            </Form.Group>
             </Form>
             </Row>
           </Card.Body>
