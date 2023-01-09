@@ -23,7 +23,7 @@ import SimpleLockScreen from 'components/authentication/LockScreen';
 import Login from 'components/authentication/Login';
 
 //Main user page
-import Main from 'components/pages/Main';
+import Main from 'components/admin/Main';
 
 //Check In Screen
 import CheckIn from 'components/forms/CheckIn';
@@ -43,6 +43,7 @@ import Courses from 'components/course/Courses';
 import CourseDetails from 'components/course/course-details';
 import CreateWorkout from 'components/admin/CreatWorkouts';
 import WorkoutLayout from 'components/workouts/WorkoutLayout';
+import EditUser from 'components/admin/EditUser';
 // import Chat from 'components/app/chat/Chat';
 
 const Layout = () => {
@@ -137,6 +138,8 @@ const Layout = () => {
 
           <Route path='app/chat' element={<EmbedFrame source={"https://t.me/+3kB3_g1rhY9hMGU1"} />} />
 
+          {/* Edit User Links */}
+          <Route path="/admin/edituser/:id" element={<EditUser />} />
 
           {/* Native Course Links */}
           <Route path="course/:courseLayout" element={<Courses />} />

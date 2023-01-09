@@ -9,10 +9,18 @@ const CreateWorkout = () => {
     const [formData, setFormData] = useState({
         title: '',
         instruction: '',
-        user_id: '',
+        id: null,
       });
-      const [user, setUser] = useState('')
+
+      const [clients, setClients] = useState([])
       const [isloading, SetIsLoading] = useState(false)
+
+      useEffect(() => {
+        supabase.from("clients").select().then(({data}) => {
+          setClients(data)
+          console.log(data)
+        })
+      }, [])
     
       //Handlers
       const handleFieldChange = e => {
@@ -20,19 +28,22 @@ const CreateWorkout = () => {
           ...formData,
           [e.target.name]: e.target.value
         });
+        console.log(e.target.name, e.target.value)
       };
     
       const handleSubmit = async e => {
         e.preventDefault();
 
         SetIsLoading(true);
+
+        console.log(formData)
     
         const { error } = await supabase
         .from('workouts')
         .insert({ 
           title: formData.title,
           instruction: formData.instruction,
-          user_id: user.id
+          user_id: formData.id
          })
     
         if (!error)
@@ -40,19 +51,12 @@ const CreateWorkout = () => {
           theme: 'colored'
         }); 
         else 
-        toast.error(`Something went wrong ${error.message}`)
+        toast.error(`Something went wrong ${error.message}`, {
+          theme: 'colored'
+        })
 
         SetIsLoading(false)
       };
-    
-      useEffect(() => {
-        supabase.auth.getSession().then(({ data: { session, user } }) => {
-          if (session.user) {
-            setUser(session.user)
-          }
-        })
-      }, [])
-    
     
       return (    
         <Card>
@@ -83,6 +87,20 @@ const CreateWorkout = () => {
               name="instruction"
               value={formData.instruction}
               onChange={handleFieldChange} />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="status">
+            <Form.Label>Assign To</Form.Label>
+            <Form.Select
+            aria-label="client"
+            name="id"
+            onChange={handleFieldChange}>
+              {clients.map(client => (
+                <option key={client.id} value={client.id}>
+                  {client.email}
+                </option>
+              ))}
+            </Form.Select>
             </Form.Group>
     
             <Button variant="primary" size="lg" type="submit" disabled={isloading}>Create</Button>

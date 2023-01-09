@@ -6,18 +6,21 @@ import Day from './Day'
 export default function WorkoutLayout() {
     
     const [workouts,SetWorkouts] = useState([])
-    const [user, setUser] = useState('')
+    const [currentUser, SetCurrentUser] = useState('')
 
-    useEffect(() => {
-        supabase.auth.getSession().then(({ data: { session, user } }) => {
-            if (session.user) {
-              setUser(session.user)
-            }
-          })
-        supabase.from('workouts').select().then(({data}) => {
-        if (data) {
-            SetWorkouts(data);
-        }})
+    useEffect(async () => {
+        const { data: { user } } = await supabase.auth.getUser()
+        if (user) {
+          SetCurrentUser(user)
+
+          const {data} = await supabase.from('workouts').select().eq('user_id', user.id)
+          if (data) {
+              SetWorkouts(data);
+          }
+        } else {
+          SetWorkouts([{title: "no workouts", instruction: "no workouts"}])
+        }
+        
     }, [])
 
 

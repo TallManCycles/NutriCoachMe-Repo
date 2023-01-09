@@ -8,7 +8,7 @@ export const dashboardRoutes = {
       icon: 'chart-pie',
       children: [
         {
-          name: 'Users',
+          name: 'Active Users',
           to: '/',
           icon: 'user',
           exact: true,
