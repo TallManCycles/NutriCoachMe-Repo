@@ -46,7 +46,8 @@ export default function EditUser() {
       full_name: formData.full_name, 
       email: formData.email, 
       status: formData.status,
-      start_date: formData.start_date })
+      start_date: formData.start_date,
+      end_date: formData.end_date })
     .eq('id', formData.id)
 
     console.log(data)
@@ -106,6 +107,22 @@ export default function EditUser() {
             className='form-control'
             placeholderText="Select Date"
             name='start_date'
+          />
+        </Form.Group>
+
+        {/* End Date */}
+        <Form.Group className="mb-3" controlId="end_date">
+          <Form.Label>End Date</Form.Label>
+          <DatePicker
+            selected={Date.parse(formData.end_date)}
+            onChange={(date) => setFormData({
+              ...formData,
+              'end_date': date
+            })}
+            formatWeekDay={day => day.slice(0, 3)}
+            className='form-control'
+            placeholderText="No end date set"
+            name='end_date'
           />
         </Form.Group>
 
