@@ -24,15 +24,10 @@ const Settings = () => {
       <Row className="g-3">
         <Col lg={8}>
           <ProfileSettings />
-          {/* <ExperiencesSettings /> */}
-          {/* <EducationSettings /> */}
         </Col>
         <Col lg={4}>
           <div className="sticky-sidebar">
-            {/* <AccountSettings /> */}
             <BillingSettings />
-            {/* <ChangePassword /> */}
-            {/* <DangerZone /> */}
           </div>
         </Col>
       </Row>
