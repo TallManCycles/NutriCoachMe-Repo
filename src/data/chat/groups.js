@@ -1,7 +1,7 @@
 export default [
   {
     id: 0,
-    name: 'Avengers',
+    name: 'Community',
     members: [
       {
         userId: 0,

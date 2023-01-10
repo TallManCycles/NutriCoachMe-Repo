@@ -13,7 +13,7 @@ import ChatMessageOptions from './ChatMessageOptions';
 const Message = ({ message, senderUserId, status, time, isGroup }) => {
   const user = users.find(({ id }) => id === senderUserId);
   const name = user?.name.split(' ')[0];
-  const isLeft = senderUserId !== 3;
+  const isLeft = senderUserId !== 1;
 
   return (
     <Flex className={classNames('p-3', { 'd-block': !isLeft })}>

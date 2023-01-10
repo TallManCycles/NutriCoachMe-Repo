@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react';
+import React, { useState, useReducer, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { ChatContext } from 'context/Context';
 import users from 'data/people';
@@ -6,8 +6,17 @@ import rawThreads from 'data/chat/threads';
 import rawMessages from 'data/chat/messages';
 import groups from 'data/chat/groups';
 import { arrayReducer } from 'reducers/arrayReducer';
+import { supabase } from 'supabase/supabaseClient';
 
 const ChatProvider = ({ children }) => {
+
+  useEffect(async () => {
+    const {data} = await supabase.from("messages").select()
+    console.log(data)
+    rawMessages = data
+  }, [])
+  
+
   const [messages, messagesDispatch] = useReducer(arrayReducer, rawMessages);
   const [threads, threadsDispatch] = useReducer(arrayReducer, rawThreads);
   const [currentThread, setCurrentThread] = useState(threads[0]);
