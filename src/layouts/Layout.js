@@ -44,7 +44,7 @@ import CourseDetails from 'components/course/course-details';
 import CreateWorkout from 'components/admin/CreatWorkouts';
 import WorkoutLayout from 'components/workouts/WorkoutLayout';
 import EditUser from 'components/admin/EditUser';
-// import Chat from 'components/app/chat/Chat';
+import Chat from 'components/app/chat/Chat';
 
 const Layout = () => {
 
@@ -136,7 +136,7 @@ const Layout = () => {
           {/* Learning Link For Time Being */}
           {/* <Route path="course/course-grid" element={<EmbedFrame source={"https://fatforweightloss.thrivecart.com/l/11-nutrition-coaching/"}/>} /> */}
 
-          <Route path='app/chat' element={<EmbedFrame source={"https://t.me/+3kB3_g1rhY9hMGU1"} />} />
+          <Route path="app/chat" element={<Chat />} />
 
           {/* Edit User Links */}
           <Route path="/admin/edituser/:id" element={<EditUser />} />
