@@ -13,7 +13,7 @@ export const CourseContext = createContext({ courses: [], primaryCourses: [] });
 
 // export const AuthWizardContext = createContext({ user: {} });
 
-// export const ChatContext = createContext();
+export const ChatContext = createContext();
 
 // export const KanbanContext = createContext({
 //   KanbanColumns: [],
