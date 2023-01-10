@@ -14,48 +14,32 @@ import { supabase } from 'supabase/supabaseClient';
 
 const Banner = () => {
 
-  const [userEmail, setUserEmail] = useState("")
+  const [user, setUser] = useState('')
+  const [profile, setProfile] = useState('')
 
   useEffect(async () => {
-    const {data, error} = await supabase.auth.getSession()
+    const {data, error} = await supabase.auth.getUser()
     
-    if (!error){
-      try {
-        setUserEmail(data.session.user.email)
-        console.log(data)
-      } catch (e) {
-        console.log(e.message)
-      }}
+    if (!error)
+        setUser(data.user)
+        
+        console.log(data.user)
   },[])
 
-
-  const [rightSidedItems] = useState([
-    {
-      title: 'Google',
-      image: google
-    },
-    {
-      title: 'Apple',
-      image: apple
-    },
-    {
-      title: ' Hewlett Packard',
-      image: hp
-    }
-  ]);
   return (
     <ProfileBanner>
       <ProfileBanner.Header avatar={avatar} coverSrc={coverSrc} />
       <ProfileBanner.Body>
+        {user ?
         <Row>
           <Col lg={8}>
             <h4 className="mb-1">
-              Anthony Hopkins <VerifiedBadge />
+              {user.full_name} <VerifiedBadge />
             </h4>
             <h5 className="fs-0 fw-normal">
               Senior Software Engineer at Technext Limited
             </h5>
-            <p className="text-500">{!userEmail ? "" : userEmail}</p>
+            <p className="text-500">{!user ? "" : user.email}</p>
             <Button variant="falcon-primary" size="sm" className="px-3">
               Following
             </Button>
@@ -71,28 +55,10 @@ const Banner = () => {
                   icon="user-circle"
                   className="fs-3 me-2 text-700"
                 />
-                <div className="flex-1">
-                  <h6 className="mb-0">See followers (330)</h6>
-                </div>
               </Flex>
             </Link>
-            {rightSidedItems.map(item => (
-              <Link to="#!" key={item.title}>
-                <Flex alignItems="center" className="mb-2">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    width={30}
-                    className="me-2"
-                  />
-                  <div className="flex-1">
-                    <h6 className="mb-0">{item.title}</h6>
-                  </div>
-                </Flex>
-              </Link>
-            ))}
           </Col>
-        </Row>
+        </Row> : ''}
       </ProfileBanner.Body>
     </ProfileBanner>
   );
