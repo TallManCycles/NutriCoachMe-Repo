@@ -2,16 +2,11 @@ import React from 'react';
 import ProfileBanner from './Banner';
 import ProfileIntro from './ProfileIntro';
 import { Col, Row } from 'react-bootstrap';
-// import associations from 'data/associations';
-// import Associations from 'components/pages/asscociations/Associations';
-// import people from 'data/people';
-// import activities from 'data/activities';
-// import Followers from './Followers';
+import activities from 'data/activities';
 import ActivityLog from './ActivityLog';
 import Experiences from './Experiences';
 import Education from './Education';
 import Events from './Events';
-// import events from 'data/events/events';
 import Photos from './Photos';
 
 const Profile = () => {
@@ -25,7 +20,7 @@ const Profile = () => {
             associations={associations.slice(0, 4)}
             colBreakpoints={{ sm: 6 }}
           /> */}
-          {/* <ActivityLog className="mt-3" activities={activities.slice(5, 9)} /> */}
+          <ActivityLog className="mt-3" activities={activities.slice(5, 9)} />
           {/* <Photos /> */}
         </Col>
         <Col lg={4}>

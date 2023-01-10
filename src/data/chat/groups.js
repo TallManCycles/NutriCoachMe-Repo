@@ -4,24 +4,12 @@ export default [
     name: 'Avengers',
     members: [
       {
-        userId: 1,
+        userId: 0,
         designation: 'Admin'
       },
       {
-        userId: 2,
+        userId: 1,
         designation: 'Moderator'
-      },
-      {
-        userId: 3,
-        designation: 'Member'
-      },
-      {
-        userId: 4,
-        designation: 'Member'
-      },
-      {
-        userId: 5,
-        designation: 'Member'
       }
     ]
   }

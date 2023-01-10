@@ -32,22 +32,6 @@ const ChatContentHeader = ({ thread, setHideSidebar }) => {
         <Col xs="auto">
           <OverlayTrigger
             placement="top"
-            overlay={<Tooltip>Start a Audio Call</Tooltip>}
-          >
-            <Button variant="falcon-primary" className="me-2" size="sm">
-              <FontAwesomeIcon icon="phone" />
-            </Button>
-          </OverlayTrigger>
-          <OverlayTrigger
-            placement="top"
-            overlay={<Tooltip>Start a Video Call</Tooltip>}
-          >
-            <Button variant="falcon-primary" className="me-2" size="sm">
-              <FontAwesomeIcon icon="video" />
-            </Button>
-          </OverlayTrigger>
-          <OverlayTrigger
-            placement="top"
             overlay={<Tooltip>Conversation Information</Tooltip>}
           >
             <Button

@@ -16,7 +16,7 @@ export default [
     id: 0,
     content: [
       {
-        senderUserId: 1,
+        senderUserId: 0,
         message:
           'Yes, in an organization stature, this is a must. Besides, we need to quickly establish all other professional appearances, e.g., having a website where members’ profile will be displayed along with additional organizational information. Providing services to existing members is more important than attracting new members at this moment, in my opinion..',
         time: {
@@ -35,7 +35,7 @@ export default [
         }
       },
       {
-        senderUserId: 3,
+        senderUserId: 0,
         message: {
           text: `I took this pic`,
           attachment: chatImg1
@@ -48,7 +48,7 @@ export default [
         }
       },
       {
-        senderUserId: 3,
+        senderUserId: 1,
         message: 'Nothing!',
         status: 'seen',
         time: {
@@ -58,7 +58,7 @@ export default [
         }
       },
       {
-        senderUserId: 1,
+        senderUserId: 0,
         message: 'How are you?',
         time: {
           day: 'Mon',
@@ -67,7 +67,7 @@ export default [
         }
       },
       {
-        senderUserId: 3,
+        senderUserId: 1,
         message: 'Fine',
         status: 'delivered',
         time: {
@@ -77,7 +77,7 @@ export default [
         }
       },
       {
-        senderUserId: 3,
+        senderUserId: 0,
         message: {
           text: `Check out my pics`,
           attachments: [
@@ -107,7 +107,7 @@ export default [
         }
       },
       {
-        senderUserId: 3,
+        senderUserId: 0,
         message: 'Give me the images.',
         time: {
           day: 'Mon',
@@ -136,12 +136,13 @@ export default [
         }
       }
     ]
-  },
+  }
+  ,
   {
     id: 1,
     content: [
       {
-        senderUserId: 13,
+        senderUserId: 2,
         message:
           'In an organization stature, this is a must. Besides, we need to quickly establish all other professional appearances, e.g. having a website where members’ profile will be displayed along with other organizations information. Providing services to existing members is more important than attracting new members at this moment, in my opinion.',
         time: {
@@ -151,7 +152,7 @@ export default [
         }
       },
       {
-        senderUserId: 3,
+        senderUserId: 2,
         message: 'Your are right 👍',
         status: 'seen',
         time: {
@@ -171,7 +172,7 @@ export default [
         }
       },
       {
-        senderUserId: 4,
+        senderUserId: 2,
         message: 'I will make a list of all the tasks.',
         status: 'seen',
         time: {
@@ -181,7 +182,7 @@ export default [
         }
       },
       {
-        senderUserId: 3,
+        senderUserId: 1,
         message: 'I can help you to do this.',
         status: 'seen',
         time: {
@@ -202,7 +203,7 @@ export default [
         }
       },
       {
-        senderUserId: 5,
+        senderUserId: 2,
         message: `Wow, it will be great!`,
         status: 'seen',
         time: {
@@ -212,8 +213,8 @@ export default [
         }
       },
       {
-        senderUserId: 5,
-        message: `<a href="#!" class="text-primary">@Emma</a> What do you think about the plan?`,
+        senderUserId: 1,
+        message: `What do you think about the plan?`,
         status: 'seen',
         time: {
           day: 'Sun',
@@ -222,260 +223,5 @@ export default [
         }
       }
     ]
-  },
-  {
-    id: 2,
-    content: [
-      {
-        senderUserId: 3,
-        message: 'Hello',
-        status: 'seen',
-        time: {
-          day: 'Mon',
-          hour: '11:54 AM',
-          date: 'May 5, 2019'
-        }
-      },
-      {
-        senderUserId: 3,
-        message: '🙂',
-        status: 'seen',
-        time: {
-          day: 'Sun',
-          hour: '11:54 AM',
-          date: 'May 5, 2019'
-        }
-      }
-    ]
-  },
-  {
-    id: 3,
-    content: [
-      {
-        senderUserId: 3,
-        message: 'Hello',
-        status: 'sent',
-        time: {
-          day: 'Mon',
-          hour: '11:54 AM',
-          date: 'May 5, 2019'
-        }
-      },
-      {
-        senderUserId: 13,
-        message: 'What are you doing?',
-        time: {
-          day: 'Sat',
-          hour: '11:54 AM',
-          date: 'May 5, 2019'
-        }
-      }
-    ]
-  },
-  {
-    id: 4,
-    content: [
-      {
-        senderUserId: 4,
-        message: "What's Up!",
-        time: {
-          day: 'Mon',
-          hour: '11:54 AM',
-          date: 'May 5, 2019'
-        }
-      },
-      {
-        senderUserId: 3,
-        message: 'Hey!',
-        status: 'sent',
-        time: {
-          day: 'Mon',
-          hour: '11:54 AM',
-          date: 'May 5, 2019'
-        }
-      },
-      {
-        senderUserId: 4,
-        message: 'How are you?',
-        time: {
-          day: 'Mon',
-          hour: '11:54 AM',
-          date: 'May 5, 2019'
-        }
-      }
-    ]
-  },
-  {
-    id: 5,
-    content: [
-      {
-        senderUserId: 5,
-        message: "What's Up!",
-        time: {
-          day: 'Mon',
-          hour: '11:54 AM',
-          date: 'May 5, 2019'
-        }
-      },
-      {
-        senderUserId: 3,
-        message: 'Hey!',
-        status: 'sent',
-        time: {
-          day: 'Mon',
-          hour: '11:54 AM',
-          date: 'May 5, 2019'
-        }
-      },
-      {
-        senderUserId: 3,
-        message: '👋',
-        status: 'sent',
-        time: {
-          day: 'Wed',
-          hour: '11:54 AM',
-          date: 'May 5, 2019'
-        }
-      }
-    ]
-  },
-  {
-    id: 6,
-    content: [
-      {
-        senderUserId: 10,
-        message: "What's Up!",
-        time: {
-          day: 'Mon',
-          hour: '11:54 AM',
-          date: 'May 5, 2019'
-        }
-      },
-      {
-        senderUserId: 3,
-        message: 'Hey!',
-        status: 'sent',
-        time: {
-          day: 'Mon',
-          hour: '11:54 AM',
-          date: 'May 5, 2019'
-        }
-      },
-      {
-        senderUserId: 10,
-        message: 'Hello!',
-        time: {
-          day: 'Fri',
-          hour: '11:54 AM',
-          date: 'May 5, 2019'
-        }
-      }
-    ]
-  },
-  {
-    id: 7,
-    content: [
-      {
-        senderUserId: 11,
-        message: 'I got my visa',
-        time: {
-          day: 'Mon',
-          hour: '11:54 AM',
-          date: 'May 5, 2019'
-        }
-      },
-      {
-        senderUserId: 11,
-        message: `Let's have fun`,
-        time: {
-          day: 'Mon',
-          hour: '11:54 AM',
-          date: 'May 5, 2019'
-        }
-      },
-      {
-        senderUserId: 3,
-        message: '😮',
-        status: 'sent',
-        time: {
-          day: 'Sun',
-          hour: '11:54 AM',
-          date: 'May 5, 2019'
-        }
-      }
-    ]
-  },
-  {
-    id: 8,
-    content: [
-      {
-        senderUserId: 12,
-        message: "What's Up!",
-        time: {
-          day: 'Mon',
-          hour: '11:54 AM',
-          date: 'May 5, 2019'
-        }
-      },
-      {
-        senderUserId: 3,
-        message: 'Hey!',
-        status: 'sent',
-        time: {
-          day: 'Mon',
-          hour: '11:54 AM',
-          date: 'May 5, 2019'
-        }
-      },
-      {
-        senderUserId: 12,
-        message: 'Hello!',
-        time: {
-          day: 'Wed',
-          hour: '11:54 AM',
-          date: 'May 5, 2019'
-        }
-      }
-    ]
-  },
-  {
-    id: 9,
-    content: [
-      {
-        senderUserId: 22,
-        message: "What's Up!",
-        time: {
-          day: 'Mon',
-          hour: '11:54 AM',
-          date: 'May 5, 2019'
-        }
-      },
-      {
-        senderUserId: 3,
-        message: 'Hey!',
-        status: 'sent',
-        time: {
-          day: 'Mon',
-          hour: '11:54 AM',
-          date: 'May 5, 2019'
-        }
-      },
-      {
-        senderUserId: 3,
-        message:
-          'Yes, in an organization stature, this is a must. Besides, we need to quickly establish all other professional appearances, e.g., having a website where members’ profile will be displayed along with additional organizational information. Providing services to existing members is more important than attracting new members at this moment, in my opinion..',
-
-        status: 'sent',
-        time: {
-          day: 'Mon',
-          hour: '11:54 AM',
-          date: 'May 5, 2019'
-        }
-      }
-    ]
-  },
-  {
-    id: 10,
-    content: []
   }
 ];
