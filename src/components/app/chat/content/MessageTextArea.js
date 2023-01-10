@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
 import AppContext, { ChatContext } from 'context/Context';
-import Picker from '@emoji-mart/react';
+//import Picker from '@emoji-mart/react';
 import PropTypes from 'prop-types';
 import React, { useContext, useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
@@ -121,7 +121,7 @@ const MessageTextArea = () => {
         />
       </Button>
 
-      {previewEmoji && (
+      {/* {previewEmoji && (
         <div className="chat-emoji-picker" dir="ltr">
           <Picker
             set="google"
@@ -131,7 +131,7 @@ const MessageTextArea = () => {
             skinTonePosition="none"
           />
         </div>
-      )}
+      )} */}
 
       <Button
         variant="send"
