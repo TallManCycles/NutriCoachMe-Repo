@@ -65,6 +65,12 @@ export const appRoutes = {
       active: true
     },
     {
+      name: 'Nutrition',
+      icon: 'chart-pie',
+      to: '/nutrition/macros',
+      active: true
+    },
+    {
       name: 'Events',
       icon: 'calendar-day',
       active: true,

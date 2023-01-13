@@ -21,6 +21,7 @@ import SimplePasswordReset from 'components/authentication/PasswordReset';
 import SimpleConfirmMail from 'components/authentication/ConfirmMail';
 import SimpleLockScreen from 'components/authentication/LockScreen';
 import Login from 'components/authentication/Login';
+import { marketShare } from 'data/dashboard/ecom';
 
 //Main user page
 import Main from 'components/admin/Main';
@@ -45,6 +46,7 @@ import CreateWorkout from 'components/admin/CreatWorkouts';
 import WorkoutLayout from 'components/workouts/WorkoutLayout';
 import EditUser from 'components/admin/EditUser';
 import Chat from 'components/app/chat/Chat';
+import Macros from 'components/nutrition/Macros';
 
 const Layout = () => {
 
@@ -137,6 +139,8 @@ const Layout = () => {
           {/* <Route path="course/course-grid" element={<EmbedFrame source={"https://fatforweightloss.thrivecart.com/l/11-nutrition-coaching/"}/>} /> */}
 
           <Route path="app/chat" element={<Chat />} />
+
+          <Route path="nutrition/macros" element={<Macros radius={['100%', '80%']}/>} />
 
           {/* Edit User Links */}
           <Route path="/admin/edituser/:id" element={<EditUser />} />
