@@ -47,6 +47,7 @@ import WorkoutLayout from 'components/workouts/WorkoutLayout';
 import EditUser from 'components/admin/EditUser';
 import Chat from 'components/app/chat/Chat';
 import Macros from 'components/nutrition/Macros';
+import Habits from 'components/nutrition/Habits';
 
 const Layout = () => {
 
@@ -142,6 +143,8 @@ const Layout = () => {
 
           <Route path="nutrition/macros" element={<Macros radius={['100%', '80%']}/>} />
 
+          <Route path="nutrition/habits" element={<Habits />} />
+
           {/* Edit User Links */}
           <Route path="/admin/edituser/:id" element={<EditUser />} />
 
@@ -156,11 +159,10 @@ const Layout = () => {
             element={<CourseDetails />}
           />
 
-          {/* <Route path="app/chat" element={<Chat />} /> */}
-
           <Route path="workouts/workoutlayout" element={<WorkoutLayout />} />
 
           <Route path="/forms/checkin" element={<CheckIn />} />
+
           <Route path="pages/starter" element={<Starter />} />
 
           <Route path="*" element={<Navigate to="/errors/404" replace />} />

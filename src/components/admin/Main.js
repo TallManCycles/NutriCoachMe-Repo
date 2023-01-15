@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Card, Col, Row, Form, Table, Dropdown } from 'react-bootstrap';
+import { Button, Card, Col, Row, Form, Spinner, Dropdown } from 'react-bootstrap';
 import CardDropdown from 'components/common/CardDropdown';
 import { Link } from 'react-router-dom';
 import editing from 'assets/img/icons/spot-illustrations/21.png';
@@ -16,10 +16,13 @@ import { useNavigate } from 'react-router-dom';
 const Main = () => {
 
   const [users, setUsers] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(async () => {
+    setIsLoading(true)
     const {error, data} = await supabase.from('clients').select().neq('status','cancelled')
     setUsers(data)
+    setIsLoading(false)
   }, [])
 
   const columns = [
@@ -107,6 +110,13 @@ const Main = () => {
   return (
     <Card>
       <Card.Body>
+        {isLoading ? 
+          <Spinner 
+            animation="border" 
+            role="status">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+          : ''}
         <h4>Active Users</h4>
         <AdvanceTableWrapper
           columns={columns}

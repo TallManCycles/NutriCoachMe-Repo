@@ -41,7 +41,7 @@ export const appRoutes = {
       active: true
     },
     {
-      name: 'Book A Video Call',
+      name: 'Video Call',
       icon: 'calendar-alt',
       to: '/app/calendar',
       active: true
@@ -71,22 +71,11 @@ export const appRoutes = {
       active: true
     },
     {
-      name: 'Events',
-      icon: 'calendar-day',
-      active: true,
-      children: [
-        {
-          name: 'Event detail',
-          to: '/events/event-detail',
-          active: true
-        },
-        {
-          name: 'Event list',
-          to: '/events/event-list',
-          active: true
-        }
-      ]
-    },
+      name: 'Habits',
+      icon: 'chart-pie',
+      to: '/nutrition/habits',
+      active: true
+    }
   ]
 };
 
