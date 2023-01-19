@@ -28,12 +28,12 @@ export const dashboardRoutes = {
 export const appRoutes = {
   label: 'Coaching',
   children: [
-    {
-      name: 'Inital Questionaire',
-      icon: 'file-alt',
-      to: '/forms/onboard',
-      active: true
-    },
+    // {
+    //   name: 'Inital Questionaire',
+    //   icon: 'file-alt',
+    //   to: '/forms/onboard',
+    //   active: true
+    // },
     {
       name: 'Check In',
       icon: 'file-alt',
@@ -82,39 +82,6 @@ export const appRoutes = {
 export const pagesRoutes = {
   label: 'Authentication',
   children: [
-    // {
-      // name: 'Login/Logout',
-      // icon: 'lock',
-      // active: true,
-      // children: [
-            
-      //       {
-      //         name: 'Register',
-      //         to: '/authentication/register',
-      //         active: true
-      //       },
-      //       {
-      //         name: 'Forgot password',
-      //         to: '/authentication/forgot-password',
-      //         active: true
-      //       },
-      //       {
-      //         name: 'Confirm mail',
-      //         to: '/authentication/confirm-mail',
-      //         active: true
-      //       },
-      //       {
-      //         name: 'Reset password',
-      //         to: '/authentication/reset-password',
-      //         active: true
-      //       },
-      //       {
-      //         name: 'Lock screen',
-      //         to: '/authentication/lock-screen',
-      //         active: true
-            // }
-          // ]
-        // },
     {
       name: 'User',
       icon: 'user',

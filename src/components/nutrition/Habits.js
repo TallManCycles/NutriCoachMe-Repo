@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { Card, Form, Row } from 'react-bootstrap'
+import { Card, Form, Row, ProgressBar } from 'react-bootstrap'
 import DatePicker from 'react-datepicker';
 import {Checkbox} from 'antd'
 
@@ -16,22 +16,18 @@ const Habits = () => {
         return Math.round((checked / 3) * 100);
     }
 
-    function firstPercentage() {
-        return checkbox1 ? 100 : 0;
-    }
-
-    function secondPercentage() {
-        return checkbox2 ? 100 : 0;
-    }
-
-    function thridPercentage() {
-        return checkbox3 ? 100 : 0;
+    function isDayComplete () {
+        if (percentage() > 99) {
+            return 'success';
+        } else {
+            return 'info';
+        }
     }
 
     return (
     <Card>
       <Card.Body className="overflow-hidden p-lg-6">
-        <h2>Meal Tracker</h2>
+        <h2>Habits</h2>
         <Row className="align-items-center justify-content-between">
         <Form id='habits'>
             <Form.Group className="mb-3" controlId="dateSelector">
@@ -67,11 +63,12 @@ const Habits = () => {
                 onChange={(e) => setCheckbox3(e.target.checked)}
             />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="check-in-success">
-                <p>Meal 1: {firstPercentage()} %</p>
+            <Form.Group className="mb-3" controlId="progress">
+            <ProgressBar now={percentage()} label={percentage()} style={{ height:'20px' }} variant={isDayComplete()} />
+                {/* <p>Meal 1: {firstPercentage()} %</p>
                 <p>Meal 2: {secondPercentage()} %</p>
                 <p>Meal 3: {thridPercentage()} %</p>
-                <p>Total: {percentage()} %</p>
+                <p>Total: {percentage()} %</p> */}
             </Form.Group>
 
             </Form>
