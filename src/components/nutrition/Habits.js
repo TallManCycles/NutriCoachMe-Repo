@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { Card, Form, Row, Col } from 'react-bootstrap'
+import { Card, Form, Row } from 'react-bootstrap'
 import DatePicker from 'react-datepicker';
 import {Checkbox} from 'antd'
 
@@ -32,24 +32,40 @@ const Habits = () => {
     <Card>
       <Card.Body className="overflow-hidden p-lg-6">
         <h2>Meal Tracker</h2>
-            <Form.Group className="mb-3" controlId="check-in-success">
-                <Col>
-                Select Date:
-                <DatePicker onChange={(date) => setSelectedDate(date)} 
-                selected={selectedDate}
-                placeholderText='Select A Date'
-                 />
-                </Col>
+        <Row className="align-items-center justify-content-between">
+        <Form id='habits'>
+            <Form.Group className="mb-3" controlId="dateSelector">
+                <Form.Label>Date:</Form.Label>
+                    <DatePicker onChange={(date) => setSelectedDate(date)} 
+                    id='dateSelector'
+                    selected={selectedDate}
+                    placeholderText='Select A Date'
+                    />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="check-in-success">
-                <Checkbox onChange={(e) => setCheckbox1(e.target.checked)}>Did you follow Meal 1?</Checkbox>
+            <Form.Group className="mb-3" controlId="check-1">
+            <Form.Check 
+                type='checkbox'
+                id='defaultCheckbox'
+                label='Did you follow meal 1?'
+                onChange={(e) => setCheckbox1(e.target.checked)}
+            />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="check-in-success">
-                <Checkbox onChange={(e) => setCheckbox2(e.target.checked)}>Did you follow Meal 2</Checkbox>
+            <Form.Group className="mb-3" controlId="check-2">
+            <Form.Check 
+                type='checkbox'
+                id='defaultCheckbox'
+                label='Did you follow meal 2?'
+                onChange={(e) => setCheckbox2(e.target.checked)}
+            />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="check-in-success">
-                <Checkbox onChange={(e) => setCheckbox3(e.target.checked)}>Did you follow  Meal 3</Checkbox>
+            <Form.Group className="mb-3" controlId="check-3">
+            <Form.Check 
+                type='checkbox'
+                id='defaultCheckbox'
+                label='Did you follow meal 3?'
+                onChange={(e) => setCheckbox3(e.target.checked)}
+            />
             </Form.Group>
             <Form.Group className="mb-3" controlId="check-in-success">
                 <p>Meal 1: {firstPercentage()} %</p>
@@ -57,6 +73,9 @@ const Habits = () => {
                 <p>Meal 3: {thridPercentage()} %</p>
                 <p>Total: {percentage()} %</p>
             </Form.Group>
+
+            </Form>
+            </Row>
         </Card.Body>
     </Card>
     );

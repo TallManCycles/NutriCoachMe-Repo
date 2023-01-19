@@ -32,7 +32,6 @@ const CheckIn = () => {
   //File uploader
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
   const [user, setUser] = useState('')
-  const viewRef = useRef(null);
 
   const files = acceptedFiles.map(file => (
     <li key={file.path}>
@@ -45,14 +44,6 @@ const CheckIn = () => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
-    });
-  };
-
-  const disableAutoScroll = () => {
-    viewRef.current.scrollTo({
-      behavior: "auto",
-      left: viewRef.current.scrollLeft,
-      top: viewRef.current.scrollTop
     });
   };
 
@@ -102,7 +93,7 @@ const CheckIn = () => {
   return (
 
     <Card>
-      <Card.Body className="overflow-hidden p-lg-6">
+      <Card.Body className="overflow-hidden p-lg-6" style={{overflow: 'auto'}}>
         <Row className="align-items-center justify-content-between">
         <h2>Weekly Check In</h2>
         <Form id='checkin' onSubmit={handleSubmit}>
@@ -111,8 +102,6 @@ const CheckIn = () => {
         <Form.Group className="mb-3" controlId="check-in-success">
           <Form.Label>How do you FEEL about your accomplished goals over the last 7 days? - Where did you succeed?</Form.Label>
           <Form.Control 
-          ref={viewRef}
-          onScroll={disableAutoScroll}
           as="textarea" 
           required={true}
           rows={3}
@@ -150,7 +139,6 @@ const CheckIn = () => {
         <Form.Label>What is your ENERGY like on a daily basis? (low to high)</Form.Label>
           <Form.Range 
             min='0'
-            
             max='5'
             step="1"
             name="energy"

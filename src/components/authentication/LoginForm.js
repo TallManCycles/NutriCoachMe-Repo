@@ -4,6 +4,7 @@ import { Button, Col, Form, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { supabase } from '../../supabase/supabaseClient'
+import {Spinner} from 'react-bootstrap';
 
 const LoginForm = ({ hasLabel }) => {
   // State
@@ -12,10 +13,12 @@ const LoginForm = ({ hasLabel }) => {
     password: '',
     remember: false
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   // Handler
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     const { error } = await supabase.auth.signInWithOtp({email: formData.email ,
       options: {
@@ -31,6 +34,8 @@ const LoginForm = ({ hasLabel }) => {
         theme: 'coloured' })
     }
 
+    setIsLoading(false)
+
   };
 
   const handleFieldChange = e => {
@@ -43,6 +48,13 @@ const LoginForm = ({ hasLabel }) => {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3">
+      {isLoading ? 
+          <Spinner 
+            animation="border" 
+            role="status">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+          : ''}
         {hasLabel && <Form.Label>Email address</Form.Label>}
         <Form.Control
           placeholder={!hasLabel ? 'Email address' : ''}
@@ -65,7 +77,7 @@ const LoginForm = ({ hasLabel }) => {
       </Form.Group> */}
 
       <Row className="justify-content-between align-items-center">
-        <Col xs="auto">
+        {/* <Col xs="auto">
           <Form.Check type="checkbox" id="rememberMe" className="mb-0">
             <Form.Check.Input
               type="checkbox"
@@ -82,16 +94,16 @@ const LoginForm = ({ hasLabel }) => {
               Remember me
             </Form.Check.Label>
           </Form.Check>
-        </Col>
+        </Col> */}
 
-        <Col xs="auto">
+        {/* <Col xs="auto"> */}
           <Link
             className="fs--1 mb-0"
             to={`/authentication/forgot-password`}
           >
             Forgot Password?
           </Link>
-        </Col>
+        {/* </Col> */}
       </Row>
 
       <Form.Group>
@@ -99,7 +111,7 @@ const LoginForm = ({ hasLabel }) => {
           type="submit"
           color="primary"
           className="mt-3 w-100"
-          disabled={!formData.email }
+          disabled={!formData.email || isLoading}
         >
           Send The Magic Link
         </Button>
