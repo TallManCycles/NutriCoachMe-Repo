@@ -17,7 +17,7 @@ export default [
     content: [
       {
         senderUserId: 0,
-        message: 'Test message 1',
+        message: 'Hi there :-)',
          time: {
           day: 'Mon',
           hour: '11:54 AM',
@@ -26,7 +26,7 @@ export default [
       },
       {
         senderUserId: 1,
-        message: 'Test message 2',
+        message: 'Hope you are doing well!',
         time: {
           day: 'Thu',
           hour: '11:54 AM',
@@ -41,7 +41,7 @@ export default [
       {
         senderUserId: 2,
         message:
-          'message 1',
+          'Welcome!',
           time: {
           day: 'Mon',
           hour: '11:54 AM',
@@ -50,7 +50,7 @@ export default [
       },
       {
         senderUserId: 1,
-        message: 'message 2',
+        message: 'Thank you!',
         status: 'seen',
         time: {
           day: 'Sun',

@@ -148,7 +148,7 @@ MacrosItem.propTypes = {
 };
 
 Macros.propTypes = {
-  data: PropTypes.array.isRequired,
+  // data: PropTypes.array.isRequired,
   radius: PropTypes.array.isRequired
 };
 

@@ -44,7 +44,7 @@ const TopNavRightSideNavItem = () => {
       </Nav.Item>
 
       {/* <CartNotification /> */}
-      <NotificationDropdown />
+      {/* <NotificationDropdown /> */}
       {/* <NineDotMenu /> */}
       <ProfileDropdown />
     </Nav>

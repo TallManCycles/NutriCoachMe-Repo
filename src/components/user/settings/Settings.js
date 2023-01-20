@@ -1,7 +1,7 @@
 import React from 'react';
 import ProfileBanner from '../ProfileBanner';
-import coverSrc from 'assets/img/generic/4.jpg';
-import avatar from 'assets/img/team/3.jpg';
+import coverSrc from 'assets/img/generic/bg-3.jpg';
+import avatar from 'assets/img/team/avatar.png';
 import { Col, Row } from 'react-bootstrap';
 import ProfileSettings from './ProfileSettings';
 import ExperiencesSettings from './ExperiencesSettings';

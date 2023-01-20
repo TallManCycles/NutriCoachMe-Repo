@@ -64,11 +64,7 @@ const Habits = () => {
             />
             </Form.Group>
             <Form.Group className="mb-3" controlId="progress">
-            <ProgressBar now={percentage()} label={percentage()} style={{ height:'20px' }} variant={isDayComplete()} />
-                {/* <p>Meal 1: {firstPercentage()} %</p>
-                <p>Meal 2: {secondPercentage()} %</p>
-                <p>Meal 3: {thridPercentage()} %</p>
-                <p>Total: {percentage()} %</p> */}
+            <ProgressBar now={percentage()} label={`${percentage()}%`} style={{ height:'20px' }} variant={isDayComplete()} />
             </Form.Group>
 
             </Form>

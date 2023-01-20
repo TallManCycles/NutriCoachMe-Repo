@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Dropdown } from 'react-bootstrap';
-import team3 from 'assets/img/team/3.jpg';
+import team3 from 'assets/img/team/avatar.png';
 import Avatar from 'components/common/Avatar';
 
 const ProfileDropdown = () => {
@@ -33,7 +33,7 @@ const ProfileDropdown = () => {
           <Dropdown.Item as={Link} to="/user/settings">
             Settings
           </Dropdown.Item>
-          <Dropdown.Item as={Link} to="/authentication/card/logout">
+          <Dropdown.Item as={Link} to="/authentication/logout">
             Logout
           </Dropdown.Item>
         </div>

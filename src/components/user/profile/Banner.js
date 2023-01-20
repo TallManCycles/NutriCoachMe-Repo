@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import coverSrc from 'assets/img/generic/4.jpg';
+import coverSrc from 'assets/img/generic/12.jpg';
 import apple from 'assets/img/logos/apple.png';
 import google from 'assets/img/logos/g.png';
 import hp from 'assets/img/logos/hp.png';
-import avatar from 'assets/img/team/2.jpg';
+import avatar from 'assets/img/team/avatar.png';
 import Flex from 'components/common/Flex';
 import VerifiedBadge from 'components/common/VerifiedBadge';
 import React, { useEffect, useState } from 'react';

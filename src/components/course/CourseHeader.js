@@ -67,14 +67,14 @@ const CourseHeader = ({ layout, setShowFilterOffcanvas }) => {
                     <InputGroup size="sm">
                       <Form.Select
                         className="pe-5"
-                        defaultValue="price"
+                        defaultValue="Newest"
                         style={{ maxWidth: '6.7rem' }}
                         onChange={({ target }) =>
                           handleSortByChange(target.value)
                         }
                       >
-                        <option value="newest">Price</option>
-                        <option value="oldest">Rating</option>
+                        <option value="newest">Newest</option>
+                        <option value="oldest">Oldest</option>
                       </Form.Select>
                       <InputGroup.Text
                         as={Button}

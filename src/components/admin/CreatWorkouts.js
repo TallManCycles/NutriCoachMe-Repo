@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Card, Col, Row, Form, Table, Dropdown } from 'react-bootstrap';
+import { Button, Card, Col, Row, Form, Table, Dropdown, Spinner } from 'react-bootstrap';
 import CardDropdown from 'components/common/CardDropdown';
 import { supabase } from 'supabase/supabaseClient';
 import { toast } from 'react-toastify';
@@ -19,7 +19,7 @@ const CreateWorkout = () => {
       useEffect(() => {
         supabase.from("clients").select().then(({data}) => {
           setClients(data)
-          console.log(data)
+          // console.log(data)
         })
       }, [])
     
@@ -30,7 +30,7 @@ const CreateWorkout = () => {
           [e.target.name]: e.target.value
         });
 
-        console.log(e.target.name, e.target.value)
+        // console.log(e.target.name, e.target.value)
       };
 
       const handleGetWorkout = async e => {
@@ -87,6 +87,13 @@ const CreateWorkout = () => {
           <Card.Body className="overflow-hidden p-lg-6">
             <Row className="align-items-center justify-content-between">
             <h2>Create A Workout</h2>
+            {isloading ? 
+            <Spinner 
+              animation="border" 
+              role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+            : ''}
             <Form id='createworkout' onSubmit={handleSubmit}>
     
             {/* Title */}
@@ -132,9 +139,9 @@ const CreateWorkout = () => {
               <Button variant="primary" size="lg" type="submit" disabled={isloading}>Create</Button>
               {/* <Button variant="error" onClick={deleteWorkout} disabled={isloading}>Delete</Button> */}
             </Form.Group>
-            <Form.Group>
+            {/* <Form.Group>
               <Button variant="secondary" onClick={handleGetWorkout} disabled={isloading}>Get Current Workout</Button>
-            </Form.Group>
+            </Form.Group> */}
             </Form>
             </Row>
           </Card.Body>
