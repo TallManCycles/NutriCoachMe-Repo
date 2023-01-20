@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Button, Form, Row, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import {Spinner} from 'react-bootstrap';
 
 import { supabase } from 'supabase/supabaseClient';
 
@@ -16,28 +17,40 @@ const RegistrationForm = ({ hasLabel }) => {
     confirmPassword: '',
     isAccepted: false
   });
+  const [isLoading, setIsLoading] = useState(false);
 
-  const navigation = useNavigate();
+  // const navigation = useNavigate();
 
   // Handler
   const handleSubmit = async e => {
     e.preventDefault();
 
+    setIsLoading(true);
+
     try {
-      const { error } = await supabase.auth.signUp({
+      const { error, data } = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,
       })
-      if (!error) {
+
+      console.log(error, data)
+
+      if (data) {
         toast.success(`Please check your email to confirm your registation`, {
           theme: 'colored'
         });
       } else {
-        toast.error(error)
+        toast.error(error, {
+          theme: 'colored'
+        });
       }
     } catch (e) {
-      toast.error(e.message)
+      toast.error(e.message, {
+        theme: 'colored'
+      });
     }
+
+    setIsLoading(false);
   };
 
   const handleFieldChange = e => {
@@ -50,6 +63,13 @@ const RegistrationForm = ({ hasLabel }) => {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3">
+      {isLoading ? 
+            <Spinner 
+              animation="border" 
+              role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+      : ''}
         {hasLabel && <Form.Label>Name</Form.Label>}
         <Form.Control
           placeholder={!hasLabel ? 'Name' : ''}
@@ -108,8 +128,8 @@ const RegistrationForm = ({ hasLabel }) => {
             }
           />
           <Form.Check.Label className="form-label">
-            I accept the <Link to="#!">terms</Link> and{' '}
-            <Link to="#!">privacy policy</Link>
+            I accept the <Link to="#">terms</Link> and{' '}
+            <Link to="#">privacy policy</Link>
           </Form.Check.Label>
         </Form.Check>
       </Form.Group>
@@ -123,7 +143,8 @@ const RegistrationForm = ({ hasLabel }) => {
             !formData.email ||
             !formData.password ||
             !formData.confirmPassword ||
-            !formData.isAccepted
+            !formData.isAccepted ||
+            isLoading
           }
         >
           Register

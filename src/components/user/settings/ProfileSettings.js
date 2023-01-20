@@ -1,57 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Card, Col, Form, Row } from 'react-bootstrap';
+import { Button, Card, Col, Form, Row, Spinner } from 'react-bootstrap';
 import FalconCardHeader from 'components/common/FalconCardHeader';
+import getSupabaseClient from 'supabase/getSupabaseClient';
 import { supabase } from 'supabase/supabaseClient';
+import { toast } from 'react-toastify';
 
 const ProfileSettings = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
-    name: 'Anthony',
-    email: 'anthony@gmail.com'
+    name: '',
+    email: ''
   });
-
-  // const [name,setName] = useState("")
-  // const [email, setEmail] = useState("")
-
-  // const getEmailByUser = async () => {
-  //   const {data, error} = await supabase.auth.getSession();
-
-  //   if (!error) {
-  //   setEmail(data.session.user.email)
-  //   console.log(data.session.user.email) 
-  //   }
-  //   else 
-  //   console.log(error.message)
-
-  // }
-
-  // const getNameByEmail = async () => {
-  //     const {data, error} = await supabase
-  //     .from('clients')
-  //     .select('Name')
-  //     .eq('Email', email)
-
-  //     if (!error && data){
-  //       setName(data)
-  //       console.log(data) }
-  //     else
-  //     console.log(error)
-
-  // }
-
-  // useEffect(async () => {
-
-  //   console.log("use effect starting")
-  //   await getEmailByUser()
-  //   console.log("got email address")
-  //   await getNameByEmail()
-  //   console.log("got name")
-
-
-  //   console.log("setting the form data")
-  //   setFormData({name: name, email: email})
-  //   console.log("finished")
-
-  // },[])
 
   const handleChange = e => {
     setFormData({
@@ -60,9 +19,34 @@ const ProfileSettings = () => {
     });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
+
+    setIsLoading(true)
+
+    const { error, data } = await supabase
+    .from('clients')
+    .update({ 
+      full_name: formData.name})
+    .eq('email', formData.email)
+
+    if (!error) {
+      toast.success(`Successfully updated details`, {
+        theme: 'colored'
+      }); 
+    }
+    else 
+    toast.error(`Something went wrong ${error.message}`)
+
+    setIsLoading(false)
   };
+
+  useEffect(async () => {
+    let client = await getSupabaseClient();
+
+    setFormData({name: client.full_name, email: client.email})
+
+  },[])
 
   return (
     <Card>
@@ -70,13 +54,13 @@ const ProfileSettings = () => {
       <Card.Body className="bg-light">
         <Form onSubmit={handleSubmit}>
           <Row className="mb-3 g-3">
-            <Form.Group as={Col} lg={6} controlId="firstName">
+            <Form.Group as={Col} lg={6} controlId="name">
               <Form.Label>First Name</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="First Name"
                 value={formData.name}
-                name="firstName"
+                name="name"
                 onChange={handleChange}
               />
             </Form.Group>
@@ -88,47 +72,14 @@ const ProfileSettings = () => {
                 type="email"
                 placeholder="Email"
                 value={formData.email}
+                disabled={true}
                 name="email"
                 onChange={handleChange}
               />
             </Form.Group>
-
-            {/* <Form.Group as={Col} lg={6} controlId="phone">
-              <Form.Label>Phone</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Phone"
-                value={formData.phone}
-                name="phone"
-                onChange={handleChange}
-              />
-            </Form.Group> */}
           </Row>
-
-          {/* <Form.Group className="mb-3" controlId="heading">
-            <Form.Label>Heading</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Heading"
-              value={formData.heading}
-              name="heading"
-              onChange={handleChange}
-            />
-          </Form.Group>
-
-          <Form.Group className="mb-3" controlId="intro">
-            <Form.Label>Intro</Form.Label>
-            <Form.Control
-              as="textarea"
-              rows={13}
-              placeholder="Intro"
-              value={formData.intro}
-              name="intro"
-              onChange={handleChange}
-            />
-          </Form.Group> */}
           <div className="text-end">
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" disabled={isLoading}>
               Update
             </Button>
           </div>

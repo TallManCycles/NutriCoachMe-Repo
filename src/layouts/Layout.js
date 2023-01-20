@@ -65,6 +65,13 @@ const Layout = () => {
     //listens to changes via supabase
     supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session)
+
+      if (session && session.access_token) {
+        supabase.auth.setSession({
+          access_token: session.access_token,
+          refresh_token: session.refresh_token
+        })
+      }
     })
   }, [])
 
