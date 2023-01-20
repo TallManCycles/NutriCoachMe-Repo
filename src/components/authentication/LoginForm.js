@@ -30,7 +30,7 @@ const LoginForm = ({ hasLabel }) => {
       })
     } else {
       console.log(error)
-      toast.error(`An error occured ${error}`, {
+      toast.error(`An error occured. If you are a new user, please register first`, {
         theme: 'coloured' })
     }
 
