@@ -1,6 +1,5 @@
 import Embed from 'components/common/Embed'
 import React from 'react'
-import { courseData } from 'data/elearning/courseData';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import {
   Button,
@@ -12,6 +11,7 @@ import {
   Row,
   Tooltip
 } from 'react-bootstrap';
+
 
 const VideoContent = () => {
   return (

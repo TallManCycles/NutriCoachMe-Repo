@@ -13,7 +13,7 @@ export default [
   {
     id: 1,
     avatarSrc: team1,
-    name: 'Kit Harington',
+    name: 'Coach',
     institution: 'Harvard Korea Society',
     profileLink: '/user/profile',
     institutionLink: '#!',

@@ -10,11 +10,10 @@ import { supabase } from 'supabase/supabaseClient';
 
 const ChatProvider = ({ children }) => {
 
-  useEffect(async () => {
-    const {data} = await supabase.from("messages").select()
-    console.log(data)
-    rawMessages = data
-  }, [])
+  // useEffect(async () => {
+  //   const {data} = await supabase.from("messages").select()
+  //   rawMessages = data
+  // }, [])
   
 
   const [messages, messagesDispatch] = useReducer(arrayReducer, rawMessages);

@@ -84,7 +84,6 @@ const CheckIn = () => {
     supabase.auth.getSession().then(({ data: { session, user } }) => {
       if (session.user) {
         setUser(session.user)
-        console.log(session.user)
       }
     })
   }, [])
