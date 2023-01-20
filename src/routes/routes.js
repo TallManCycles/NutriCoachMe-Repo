@@ -17,7 +17,7 @@ export const dashboardRoutes = {
         {
           name: 'Create Workout',
           to: 'admin/createworkout',
-          icon: 'user',
+          icon: 'dumbbell',
           exact: true,
           active: true
         },
@@ -54,7 +54,7 @@ export const appRoutes = {
     },
     {
       name: 'Workouts',
-      icon: 'book',
+      icon: 'dumbbell',
       to: '/workouts/WorkoutLayout',
       active: true
     },
@@ -72,7 +72,7 @@ export const appRoutes = {
     },
     {
       name: 'Habits',
-      icon: 'chart-pie',
+      icon: 'list',
       to: '/nutrition/habits',
       active: true
     }
@@ -109,12 +109,12 @@ export const pagesRoutes = {
         }
       ]
     },
-    {
-      name: 'Faq',
-      icon: 'question-circle',
-      to: '/faq/faq-basic',
-      active: true,
-    },
+    // {
+    //   name: 'Faq',
+    //   icon: 'question-circle',
+    //   to: '/faq/faq-basic',
+    //   active: true,
+    // },
   ]
 };
 
