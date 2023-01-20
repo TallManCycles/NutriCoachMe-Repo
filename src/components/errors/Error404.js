@@ -16,7 +16,7 @@ const Error404 = () => {
         <p>
           Make sure the address is correct and that the page hasn't moved. If
           you think this is a mistake,
-          <a href="mailto:info@exmaple.com" className="ms-1">
+          <a href="mailto:support@fatforweightloss.com.au" className="ms-1">
             contact us
           </a>
           .
