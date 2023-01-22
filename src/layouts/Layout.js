@@ -22,9 +22,11 @@ import SimpleConfirmMail from 'components/authentication/ConfirmMail';
 import SimpleLockScreen from 'components/authentication/LockScreen';
 import Login from 'components/authentication/Login';
 import { marketShare } from 'data/dashboard/ecom';
+import Home from 'components/home/Home';
 
-//Main user page
+//Admin pages
 import Main from 'components/admin/Main';
+import EditUser from 'components/admin/EditUser';
 
 //Check In Screen
 import CheckIn from 'components/forms/CheckIn';
@@ -43,9 +45,14 @@ import EmbedFrame from 'components/app/EmbedFrame';
 import Courses from 'components/course/Courses';
 import CourseDetails from 'components/course/course-details';
 import CreateWorkout from 'components/admin/CreatWorkouts';
+
+//Workouts
 import WorkoutLayout from 'components/workouts/WorkoutLayout';
-import EditUser from 'components/admin/EditUser';
+
+//Chat
 import Chat from 'components/app/chat/Chat';
+
+//Nutrution
 import Macros from 'components/nutrition/Macros';
 import Habits from 'components/nutrition/Habits';
 
@@ -130,32 +137,34 @@ const Layout = () => {
           <Route path="/" element={<Login/>} />
         </Route>
        : 
-       <Route element={<MainLayout />}>
-          <Route path="/" element={<Main />} />
+      <Route element={<MainLayout />}>
 
+        {/* Aadmin Screens */}
+          <Route path="/" element={<Main />} />
+          <Route path="/admin/edituser/:id" element={<EditUser />} />
           <Route path="admin/createworkout" element={<CreateWorkout />} />
 
-          <Route path='forms/onboard' element={<EmbedFrame source={"https://form.jotform.com/fatforweightloss/new-client-intake-form"} />} />
+          {/* Forms */}
 
+          <Route path='forms/onboard' element={<EmbedFrame source={"https://form.jotform.com/fatforweightloss/new-client-intake-form"} />} />
+          <Route path="/forms/checkin" element={<CheckIn />} />
+
+          {/* Bookings */}
           <Route path="app/calendar" element={<EmbedFrame source={"https://calendly.com/fatforweightloss/monthly-client-book-in-consultation"}/>} />
 
+          {/* User Settings */}
           <Route path="user/profile" element={<Profile />} />
           <Route path="user/settings" element={<Settings />} />
 
-
-          {/* Learning Link For Time Being */}
-          {/* <Route path="course/course-grid" element={<EmbedFrame source={"https://fatforweightloss.thrivecart.com/l/11-nutrition-coaching/"}/>} /> */}
-
+          {/* Chat */}
           <Route path="app/chat" element={<Chat />} />
 
+          {/* Nutrition */}
           <Route path="nutrition/macros" element={<Macros radius={['100%', '80%']}/>} />
-
           <Route path="nutrition/habits" element={<Habits />} />
 
-          {/* Edit User Links */}
-          <Route path="/admin/edituser/:id" element={<EditUser />} />
 
-          {/* Native Course Links */}
+          {/* Course */}
           <Route path="course/:courseLayout" element={<Courses />} />
           <Route
             path="course/course-details"
@@ -166,18 +175,20 @@ const Layout = () => {
             element={<CourseDetails />}
           />
 
+          {/* Workouts */}
           <Route path="workouts/workoutlayout" element={<WorkoutLayout />} />
 
-          <Route path="/forms/checkin" element={<CheckIn />} />
+          {/* Unsure what this does, but may be the reason it always errors on link submit */}
+          <Route path="/*" element={<Navigate to="/" replace />} />
 
-          <Route path="pages/starter" element={<Starter />} />
-
-          <Route path="*" element={<Navigate to="/errors/404" replace />} />
         </Route>
         }
         </>
-        <Route path="*" element={<Navigate to="/errors/404" replace />} />
-        </Routes>
+
+        
+        {/* <Route path="*" element={<Navigate to="/errors/404" replace />} /> */}
+      </Routes>
+      
       {/* <SettingsToggle /> */}
       <SettingsPanel />
       <ToastContainer
