@@ -180,6 +180,8 @@ function Home() {
             })
         }
 
+        setIsLoading(false)
+
       }
 
   return (
