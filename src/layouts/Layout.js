@@ -144,6 +144,10 @@ const Layout = () => {
           <Route path="/admin/edituser/:id" element={<EditUser />} />
           <Route path="admin/createworkout" element={<CreateWorkout />} />
 
+          {/* User Home Screen */}
+
+          <Route path='/home/home' element={<Home />} />
+
           {/* Forms */}
 
           <Route path='forms/onboard' element={<EmbedFrame source={"https://form.jotform.com/fatforweightloss/new-client-intake-form"} />} />
@@ -178,7 +182,7 @@ const Layout = () => {
           {/* Workouts */}
           <Route path="workouts/workoutlayout" element={<WorkoutLayout />} />
 
-          {/* Unsure what this does, but may be the reason it always errors on link submit */}
+          {/* Catch All Solution*/}
           <Route path="/*" element={<Navigate to="/" replace />} />
 
         </Route>

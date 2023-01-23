@@ -35,6 +35,12 @@ export const appRoutes = {
     //   active: true
     // },
     {
+      name: 'Home',
+      icon: 'home',
+      to: '/home/home',
+      active: true
+    },
+    {
       name: 'Check In',
       icon: 'file-alt',
       to: '/forms/checkin',
