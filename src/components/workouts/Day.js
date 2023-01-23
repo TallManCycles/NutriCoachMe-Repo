@@ -7,12 +7,12 @@ export default function Day ({title, instruction}) {
 
   return (
     <Accordion>
-        <Accordion.Item eventKey="0">
+      <Accordion.Item eventKey="0">
         <Accordion.Header>{title}</Accordion.Header>
-        <Accordion.Body>
-        {instruction}
-        </Accordion.Body>
-    </Accordion.Item>
+          <Accordion.Body>
+          {instruction}
+          </Accordion.Body>
+      </Accordion.Item>
     </Accordion>
   )
 }

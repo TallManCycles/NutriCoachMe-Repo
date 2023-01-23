@@ -1,6 +1,5 @@
 export const dashboardRoutes = {
   label: 'Admin',
-  labelDisable: true,
   children: [
     {
       name: 'Admin',
@@ -9,7 +8,7 @@ export const dashboardRoutes = {
       children: [
         {
           name: 'Active Users',
-          to: '/',
+          to: '/admin/active',
           icon: 'user',
           exact: true,
           active: true
@@ -37,7 +36,7 @@ export const appRoutes = {
     {
       name: 'Home',
       icon: 'home',
-      to: '/home/home',
+      to: '/',
       active: true
     },
     {

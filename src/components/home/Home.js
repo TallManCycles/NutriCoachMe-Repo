@@ -87,11 +87,7 @@ function Home() {
 
         const {data, error} = await supabase.from('tracking_data').select().match({user_id: client.id, date: formData.date}).limit(1)
 
-        if (error) {
-            console.log(error.message);
-        }
-
-        if (data.length > 0) {
+        if (!error && data.length > 0) {
             const savedData = data[0]
 
             setFormData({...formData,

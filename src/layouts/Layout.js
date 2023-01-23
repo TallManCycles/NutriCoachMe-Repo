@@ -140,13 +140,13 @@ const Layout = () => {
       <Route element={<MainLayout />}>
 
         {/* Aadmin Screens */}
-          <Route path="/" element={<Main />} />
+          <Route path="/admin/active" element={<Main />} />
           <Route path="/admin/edituser/:id" element={<EditUser />} />
           <Route path="admin/createworkout" element={<CreateWorkout />} />
 
           {/* User Home Screen */}
 
-          <Route path='/home/home' element={<Home />} />
+          <Route path='/' element={<Home />} />
 
           {/* Forms */}
 
