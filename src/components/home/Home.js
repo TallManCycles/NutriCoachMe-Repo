@@ -7,10 +7,13 @@ import 'dayjs/locale/de';
 import { supabase } from 'supabase/supabaseClient';
 import getSupabaseClient from 'supabase/getSupabaseClient';
 import {toast} from 'react-toastify'
+import Habits from 'components/nutrition/Habits';
+import Macros from 'components/nutrition/Macros';
 
 function Home() {
 
     const [isLoading, setIsLoading] = useState(false)
+    const [client, setClient] = useState({})
 
     const [formData, setFormData] = useState({
         date: dayjs(),
@@ -84,6 +87,8 @@ function Home() {
         setIsLoading(true)
 
         const client = await getSupabaseClient();
+
+        setClient(client);
 
         const {data, error} = await supabase.from('tracking_data').select().match({user_id: client.id, date: formData.date}).limit(1)
 
@@ -198,6 +203,18 @@ function Home() {
 
         </Card.Body>
     </Card>
+
+    <Accordion style={{margin: 5}}>
+        <Accordion.Item>
+        <Accordion.Header>Goals</Accordion.Header>
+                <Accordion.Body>
+                    {client.macros 
+                    ? <Macros radius={['100%', '80%']} /> 
+                    : <Habits />}
+                </Accordion.Body>
+
+        </Accordion.Item>
+    </Accordion>
 
     <Accordion defaultActiveKey="0" flush style={{margin: 5}} >
         <Accordion.Item eventKey="0">

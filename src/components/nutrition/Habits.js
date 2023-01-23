@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from 'react'
 import { Card, Form, Row, ProgressBar } from 'react-bootstrap'
-import DatePicker from 'react-datepicker';
-import {Checkbox} from 'antd'
+import { DatePicker, Checkbox } from 'antd';
+import dayjs from 'dayjs';
+import 'dayjs/locale/de';
 
-
-
-const Habits = () => {
-    const [selectedDate, setSelectedDate] = useState(new Date());
+const Habits = ({noCard}) => {
+    const [selectedDate, setSelectedDate] = useState(dayjs());
     const [checkbox1, setCheckbox1] = useState(false);
     const [checkbox2, setCheckbox2] = useState(false);
     const [checkbox3, setCheckbox3] = useState(false);
@@ -34,8 +33,7 @@ const Habits = () => {
                 <Form.Label>Date:</Form.Label>
                     <DatePicker onChange={(date) => setSelectedDate(date)} 
                     id='dateSelector'
-                    selected={selectedDate}
-                    placeholderText='Select A Date'
+                    value={selectedDate}
                     />
             </Form.Group>
 
@@ -69,8 +67,8 @@ const Habits = () => {
 
             </Form>
             </Row>
-        </Card.Body>
-    </Card>
+      </Card.Body>
+     </Card>
     );
   };
 

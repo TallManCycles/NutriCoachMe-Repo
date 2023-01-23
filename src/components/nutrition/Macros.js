@@ -4,16 +4,13 @@ import { PieChart } from 'echarts/charts';
 import * as echarts from 'echarts/core';
 import { getColor } from 'helpers/utils';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, Col, Row } from 'react-bootstrap';
-
 import BasicECharts from 'components/common/BasicEChart';
-import {
-  GridComponent,
-  TitleComponent,
-  TooltipComponent
-} from 'echarts/components';
+import { GridComponent, TitleComponent, TooltipComponent } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
+import getSupabaseClient from 'supabase/getSupabaseClient';
+import { supabase } from 'supabase/supabaseClient';
 
 echarts.use([
   TitleComponent,
@@ -88,31 +85,66 @@ const MacrosItem = ({ item, index, total }) => {
 
 const Macros = ({ radius }) => {
 
-    const macros = 
-    {   protein: 170,  
-        carbs: 390,
-        fat: 100}
+  const [changed, setChanged] = useState(false)
 
-    const calories = {
-        pcalories: macros.protein * 4,
-        ccalories: macros.carbs * 4,
-        fcalories: macros.fat * 9
-    }
+  const [macros, setMacros] = useState({
+    protein: 0,  
+    carbs: 0,
+    fat: 0,
+    calories: 0 })
 
-  const data = [
+  const [calories, setCalories] = useState({
+          pcalories: macros.protein * 4,
+          ccalories: macros.carbs * 4,
+          fcalories: macros.fat * 9
+      })
+
+  async function getData () {
+    const client = await getSupabaseClient();
+    const {data} = await supabase.from('client_nutrition').select().eq('user_id', client.id).limit(1)
+    if (data) {
+      let currentMacros = data[0]
+      setMacros({
+        calories: currentMacros.calories,
+        protein: currentMacros.protein,
+        carbs: currentMacros.carbs,
+        fat: currentMacros.fats})
+      setCalories({
+        pcalories: currentMacros.protein * 4,
+        ccalories: currentMacros.carbs * 4,
+        fcalories: currentMacros.fats * 9
+      })
+      setData([
         { id: 1, value: calories.pcalories, macro: macros.protein , name: 'Protein', color: 'primary' },
         { id: 2, value: calories.fcalories, macro: macros.fat, name: 'Fat', color: 'info' },
         { id: 3, value: calories.ccalories, macro: macros.carbs, name: 'Carbs', color: 'warning' }
-    ];
+      ])
+      setChanged(true)
+    } else {
+      console.log("no macros set for this client")
+    }
+
+  }
+
+  useEffect(async () => {
+    await getData();
+  },[changed])
+
+  const [data, setData] = useState([
+    { id: 1, value: calories.pcalories, macro: macros.protein , name: 'Protein', color: 'primary' },
+    { id: 2, value: calories.fcalories, macro: macros.fat, name: 'Fat', color: 'info' },
+    { id: 3, value: calories.ccalories, macro: macros.carbs, name: 'Carbs', color: 'warning' }
+  ]);
 
   const total = data.reduce((acc, val) => val.value + acc, 0);
+
+  
   return (
     <Card className="h-md-100">
       <Card.Body>
         <Row className="justify-content-between g-0">
           <Col xs={6} sm={7} xxl className="pe-2">
-            <h6 className="mt-1">Current Macros</h6>
-
+            <h6 className="mt-1">Macro Goals</h6>
             {data.map((item, index) => (
               <MacrosItem
                 item={item}
@@ -148,7 +180,6 @@ MacrosItem.propTypes = {
 };
 
 Macros.propTypes = {
-  // data: PropTypes.array.isRequired,
   radius: PropTypes.array.isRequired
 };
 
