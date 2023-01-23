@@ -1,7 +1,7 @@
 import { DatePicker } from 'antd';
 import Flex from 'components/common/Flex';
 import React, {useEffect, useState} from 'react'
-import { Card, Button, Form, Accordion } from 'react-bootstrap'
+import { Card, Button, Form, Accordion, Spinner } from 'react-bootstrap'
 import dayjs from 'dayjs';
 import 'dayjs/locale/de';
 import { supabase } from 'supabase/supabaseClient';
@@ -191,7 +191,7 @@ function Home() {
       }
 
   return (
-    <div>
+    <div> 
     <Card style={{margin: 5}}>
         <Card.Body>
             <h2 style={{textAlign: 'center'}}>{getTimeOfDate()} Aaron </h2>
@@ -213,11 +213,15 @@ function Home() {
         <Accordion.Item>
         <Accordion.Header>Current Goals</Accordion.Header>
                 <Accordion.Body>
-                    {client.macros 
-                    ? <Macros radius={['100%', '80%']} /> 
-                    : <Habits />}
+                    {isLoading ?
+                        <Spinner 
+                            animation="border" 
+                            role="status" style={{marginLeft: '50%'}}>
+                            <span className="visually-hidden">Loading...</span>
+                        </Spinner> : <div>
+                        {client.macros ? <Macros radius={['100%', '80%']} /> : <Habits />}</div>}
+                        
                 </Accordion.Body>
-
         </Accordion.Item>
     </Accordion>
 
@@ -232,6 +236,7 @@ function Home() {
                 rows={1}
                 name='protein'
                 value={formData.protein}
+                disabled={isLoading}
                 onChange={handleFieldChange} />
             <Form.Label>Carbs(g):</Form.Label>
             <Form.Control 
@@ -239,6 +244,7 @@ function Home() {
                 rows={1}
                 name="carbs"
                 value={formData.carbs}
+                disabled={isLoading}
                 onChange={handleFieldChange} />
             <Form.Label>Fats(g):</Form.Label>
             <Form.Control 
@@ -246,6 +252,7 @@ function Home() {
                 rows={1}
                 name="fats"
                 value={formData.fats}
+                disabled={isLoading}
                 onChange={handleFieldChange} />
         </Form>
         </Accordion.Body>
