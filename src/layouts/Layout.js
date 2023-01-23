@@ -141,7 +141,7 @@ const Layout = () => {
 
         {/* Aadmin Screens */}
           <Route path="/admin/active" element={<Main />} />
-          <Route path="/admin/edituser/:id" element={<EditUser />} />
+          <Route path="/admin/active/edituser/:id" element={<EditUser />} />
           <Route path="admin/createworkout" element={<CreateWorkout />} />
 
           {/* User Home Screen */}

@@ -39,7 +39,7 @@ const Main = () => {
         const user = users.find(user => user.email === email)
 
         return(
-          <Link to={`admin/edituser/${user.id}`}> {email}
+          <Link to={`edituser/${user.id}`}> {email}
           </Link>
         ) 
       }
