@@ -140,8 +140,7 @@ const Macros = ({ radius }) => {
 
   
   return (
-    <Card className="h-md-100">
-      <Card.Body>
+    <div>
         <Row className="justify-content-between g-0">
           <Col xs={6} sm={7} xxl className="pe-2">
             <h6 className="mt-1">Macro Goals</h6>
@@ -164,8 +163,7 @@ const Macros = ({ radius }) => {
             </div>
           </Col>
         </Row>
-      </Card.Body>
-    </Card>
+      </div>
   );
 };
 

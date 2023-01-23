@@ -70,12 +70,6 @@ export const appRoutes = {
       active: true
     },
     {
-      name: 'Nutrition',
-      icon: 'chart-pie',
-      to: '/nutrition/macros',
-      active: true
-    },
-    {
       name: 'Habits',
       icon: 'list',
       to: '/nutrition/habits',

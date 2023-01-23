@@ -17,27 +17,27 @@ function Home() {
 
     const [formData, setFormData] = useState({
         date: dayjs(),
-        calories: 0,
-        protein: 0,
-        carbs: 0,
-        fats: 0,
-        weight: 0,
+        calories: null,
+        protein: null,
+        carbs: null,
+        fats: null,
+        weight: null,
         notes: '',
-        sleep: 0,
-        steps: 0,
+        sleep: null,
+        steps: null,
         complete: false
     })
 
     function clearData () {
         setFormData({...formData,
-            calories: 0,
-            protein: 0,
-            carbs: 0,
-            fats: 0,
-            weight: 0,
+            calories: '',
+            protein: '',
+            carbs: '',
+            fats: '',
+            weight: '',
             notes: '',
-            sleep: 0,
-            steps: 0,
+            sleep: '',
+            steps: '',
             complete: false })
     }
 
@@ -49,6 +49,7 @@ function Home() {
 
     function alterDate (alterBy) {
         if(!formData.complete) {
+            //Log this error in a better way
             console.log("day is not complete")
         }
         const currentDate = formData.date.add(alterBy,'day');
@@ -66,13 +67,15 @@ function Home() {
     }
 
     const handleDateChange = (date) => {
-        if (date && formData.complete) {
+        if(!formData.complete) {
+            //Log this error in a better way
+            console.log("day is not complete")
+        }
+        if (date) {
             setFormData({
                 ...formData,
                 date: date})
-        } else {
-            console.log("day is not complete")
-        }
+        } 
       };
 
       const handleFieldChange = e => {
@@ -93,6 +96,7 @@ function Home() {
         const {data, error} = await supabase.from('tracking_data').select().match({user_id: client.id, date: formData.date}).limit(1)
 
         if (!error && data.length > 0) {
+            console.log("there is data", data)
             const savedData = data[0]
 
             setFormData({...formData,
@@ -107,6 +111,7 @@ function Home() {
                 calories: savedData.calories
             })
         } else {
+            console.log("there is no data")
             clearData()
         }
 
@@ -206,7 +211,7 @@ function Home() {
 
     <Accordion style={{margin: 5}}>
         <Accordion.Item>
-        <Accordion.Header>Goals</Accordion.Header>
+        <Accordion.Header>Current Goals</Accordion.Header>
                 <Accordion.Body>
                     {client.macros 
                     ? <Macros radius={['100%', '80%']} /> 
@@ -218,7 +223,7 @@ function Home() {
 
     <Accordion defaultActiveKey="0" flush style={{margin: 5}} >
         <Accordion.Item eventKey="0">
-            <Accordion.Header>Nutrition</Accordion.Header>
+            <Accordion.Header>Nutrition Log</Accordion.Header>
                 <Accordion.Body>
         <Form>
             <Form.Label>Protein(g):</Form.Label>
@@ -295,12 +300,15 @@ function Home() {
         </Accordion.Item>
     </Accordion>
         <div className="d-grid gap-2">
-            <Button variant="primary" style={{margin: 10}} onClick={saveDay} disabled={isLoading || formData.complete}>
-                Complete
-            </Button>
-            <Button variant="primary" style={{margin: 10}} onClick={updateDay} disabled={isLoading}>
-                Save
-            </Button>
+            {formData.complete ?
+                <Button variant="primary" style={{margin: 10}} onClick={updateDay} disabled={isLoading}>
+                    Save
+                </Button> 
+            :
+                <Button variant="primary" style={{margin: 10}} onClick={saveDay} disabled={isLoading || formData.complete}>
+                    Complete
+                </Button> 
+            } 
         </div>
     </div>
   ) 
