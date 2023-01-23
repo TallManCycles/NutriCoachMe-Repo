@@ -189,13 +189,13 @@ function Home() {
             <h2 style={{textAlign: 'center'}}>{getTimeOfDate()} Aaron </h2>
             <h5 style={{textAlign: 'center'}}>Select Date:</h5>
             <Flex justifyContent='center'>
-                <Button onClick={() => {alterDate(-1)}}>{`<`}</Button>
+                <Button onClick={() => {alterDate(-1)}} disabled={isLoading}>{`<`}</Button>
                 <DatePicker
                 name='date'
                 value={formData.date}
                 onChange={handleDateChange}
                 />
-                <Button onClick={() => {alterDate(1)}}>{`>`}</Button>
+                <Button onClick={() => {alterDate(1)}} disabled={isLoading}>{`>`}</Button>
             </Flex>
 
         </Card.Body>
