@@ -1,18 +1,27 @@
-import React, {useEffect, useState} from 'react'
-import { Card, Form, Row, ProgressBar } from 'react-bootstrap'
-import { DatePicker, Checkbox } from 'antd';
-import dayjs from 'dayjs';
-import 'dayjs/locale/de';
+import React, {useState} from 'react'
+import { Card, Form, Row, ProgressBar, FormLabel } from 'react-bootstrap'
 
-const Habits = ({noCard}) => {
-    const [selectedDate, setSelectedDate] = useState(dayjs());
-    const [checkbox1, setCheckbox1] = useState(false);
-    const [checkbox2, setCheckbox2] = useState(false);
-    const [checkbox3, setCheckbox3] = useState(false);
+const Habits = ({mealsByDay}) => {
+
+    const [meals, setMeals] = useState(mealsByDay);
+
+    const setMealValue = (e) => {
+        const updatedMeals = meals.map(meal => {
+            if (meal.id === parseInt(e.target.id)) {
+                return {...meal, value: e.target.checked};
+            }
+            return meal;
+        });
+        setMeals(updatedMeals);
+    }
 
     function percentage() {
-        const checked = [checkbox1, checkbox2, checkbox3].filter(checkbox => checkbox).length;
-        return Math.round((checked / 3) * 100);
+        if (meals && meals.length > 0) {
+            const checked = meals.filter(meal => meal.value).length;
+            return Math.round((checked / meals.length) * 100);
+        } else {
+            return 0
+        }
     }
 
     function isDayComplete () {
@@ -24,51 +33,28 @@ const Habits = ({noCard}) => {
     }
 
     return (
-    <Card>
-      <Card.Body className="overflow-hidden p-lg-6">
-        <h2>Habits</h2>
-        <Row className="align-items-center justify-content-between">
-        <Form id='habits'>
-            <Form.Group className="mb-3" controlId="dateSelector">
-                <Form.Label>Date:</Form.Label>
-                    <DatePicker onChange={(date) => setSelectedDate(date)} 
-                    id='dateSelector'
-                    value={selectedDate}
-                    />
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="check-1">
-            <Form.Check 
+        <Form id='habits'>            
+            {meals && meals.length > 0 ? meals.map((meal) => {
+                return (
+                <div key={meal.id}>
+                <Form.Group className="mb-3" controlId={meal.id}>
+                <Form.Check 
                 type='checkbox'
-                id='defaultCheckbox'
-                label='Did you follow meal 1?'
-                onChange={(e) => setCheckbox1(e.target.checked)}
-            />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="check-2">
-            <Form.Check 
-                type='checkbox'
-                id='defaultCheckbox'
-                label='Did you follow meal 2?'
-                onChange={(e) => setCheckbox2(e.target.checked)}
-            />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="check-3">
-            <Form.Check 
-                type='checkbox'
-                id='defaultCheckbox'
-                label='Did you follow meal 3?'
-                onChange={(e) => setCheckbox3(e.target.checked)}
-            />
-            </Form.Group>
+                id={meal.id}
+                checked={meal.value}
+                label={`Did you follow meal ${meal.id}?`}
+                onChange={(e) => setMealValue(e)}
+                />
+                </Form.Group>
+                </div> )
+            }) : <Form.Label>No Meals To Log</Form.Label>}
+            
             <Form.Group className="mb-3" controlId="progress">
-            <ProgressBar now={percentage()} label={`${percentage()}%`} style={{ height:'20px' }} variant={isDayComplete()} />
+            {meals ? 
+            <ProgressBar now={percentage()} label={`${percentage()}%`} style={{ height:'20px' }} variant={isDayComplete()} /> : '' }
             </Form.Group>
 
             </Form>
-            </Row>
-      </Card.Body>
-     </Card>
     );
   };
 

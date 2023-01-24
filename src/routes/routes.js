@@ -34,7 +34,7 @@ export const appRoutes = {
     //   active: true
     // },
     {
-      name: 'Home',
+      name: 'Nutrition Log',
       icon: 'home',
       to: '/',
       active: true
@@ -67,12 +67,6 @@ export const appRoutes = {
       name: 'Chat',
       icon: 'comments',
       to: '/app/chat',
-      active: true
-    },
-    {
-      name: 'Habits',
-      icon: 'list',
-      to: '/nutrition/habits',
       active: true
     }
   ]

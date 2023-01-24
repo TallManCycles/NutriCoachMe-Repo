@@ -9,6 +9,7 @@ import getSupabaseClient from 'supabase/getSupabaseClient';
 import {toast} from 'react-toastify'
 import Habits from 'components/nutrition/Habits';
 import Macros from 'components/nutrition/Macros';
+import AccordionBody from 'react-bootstrap/esm/AccordionBody';
 
 function Home() {
 
@@ -17,16 +18,23 @@ function Home() {
 
     const [formData, setFormData] = useState({
         date: dayjs(),
-        calories: null,
-        protein: null,
-        carbs: null,
-        fats: null,
-        weight: null,
+        calories: '',
+        protein: '',
+        carbs: '',
+        fats: '',
+        weight: '',
         notes: '',
-        sleep: null,
-        steps: null,
+        sleep: '',
+        steps: '',
         complete: false
     })
+
+    const meals = [
+        {id: 1, value: false},
+        {id: 2, value: false},
+        {id: 3, value: false},
+        {id: 4, value: false}
+    ]
 
     function clearData () {
         setFormData({...formData,
@@ -47,19 +55,21 @@ function Home() {
         return hour < 12 ? "Good Morning" : "Good Evening";
     }
 
+    function checkAndSetNull(variable) {
+        if (variable === "") {
+          variable = null;
+        }
+        return variable;
+      }
+
     function alterDate (alterBy) {
         if(!formData.complete) {
-            //Log this error in a better way
-            console.log("day is not complete")
+            //Prompt to save here
         }
         const currentDate = formData.date.add(alterBy,'day');
         setFormData({
             ...formData,
             date: currentDate})
-    }
-
-    function calculateCalories () {
-        setFormData({...formData, calories: ((formData.protein * 4) + (formData.carbs * 4) + (formData.fats * 9))})
     }
 
     function setAsComplete() {
@@ -68,8 +78,7 @@ function Home() {
 
     const handleDateChange = (date) => {
         if(!formData.complete) {
-            //Log this error in a better way
-            console.log("day is not complete")
+            //prompt to save here
         }
         if (date) {
             setFormData({
@@ -79,6 +88,7 @@ function Home() {
       };
 
       const handleFieldChange = e => {
+
           setFormData({
               ...formData,
               [e.target.name]: e.target.value
@@ -96,7 +106,6 @@ function Home() {
         const {data, error} = await supabase.from('tracking_data').select().match({user_id: client.id, date: formData.date}).limit(1)
 
         if (!error && data.length > 0) {
-            console.log("there is data", data)
             const savedData = data[0]
 
             setFormData({...formData,
@@ -111,7 +120,6 @@ function Home() {
                 calories: savedData.calories
             })
         } else {
-            console.log("there is no data")
             clearData()
         }
 
@@ -126,8 +134,6 @@ function Home() {
       const saveDay = async () => {
         setIsLoading(true)
 
-        calculateCalories()
-
         const client = await getSupabaseClient();
 
         setAsComplete()
@@ -135,13 +141,13 @@ function Home() {
         const {error} = await supabase.from('tracking_data').insert({ 
             user_id: client.id, 
             date: formData.date,
-            weight: formData.weight,
-            calories: formData.calories,
-            protein: formData.protein,
-            carbs: formData.carbs,
-            fats: formData.fats,
-            sleep: formData.sleep,
-            steps: formData.steps,
+            weight: checkAndSetNull(formData.weight),
+            calories: checkAndSetNull(((formData.protein * 4) + (formData.carbs * 4) + (formData.fats * 9))),
+            protein: checkAndSetNull(formData.protein),
+            carbs: checkAndSetNull(formData.carbs),
+            fats: checkAndSetNull(formData.fats),
+            sleep: checkAndSetNull(formData.sleep),
+            steps: checkAndSetNull(formData.steps),
             notes: formData.notes,
             complete: true
          })
@@ -165,13 +171,13 @@ function Home() {
         
         const {error} = await supabase.from('tracking_data').update({ 
             date: formData.date,
-            weight: formData.weight,
-            calories: formData.calories,
-            protein: formData.protein,
-            carbs: formData.carbs,
-            fats: formData.fats,
-            sleep: formData.sleep,
-            steps: formData.steps,
+            weight: checkAndSetNull(formData.weight),
+            calories: checkAndSetNull(((formData.protein * 4) + (formData.carbs * 4) + (formData.fats * 9))),
+            protein: checkAndSetNull(formData.protein),
+            carbs: checkAndSetNull(formData.carbs),
+            fats: checkAndSetNull(formData.fats),
+            sleep: checkAndSetNull(formData.sleep),
+            steps: checkAndSetNull(formData.steps),
             notes: formData.notes,
             complete: true
          }).eq('date', formData.date)
@@ -219,12 +225,13 @@ function Home() {
                             role="status" style={{marginLeft: '50%'}}>
                             <span className="visually-hidden">Loading...</span>
                         </Spinner> : <div>
-                        {client.macros ? <Macros radius={['100%', '80%']} /> : <Habits />}</div>}
+                        {client.macros ? <Macros radius={['100%', '80%']} /> : <div>Set Meal Plan Targets HERE</div>}</div>}
                         
                 </Accordion.Body>
         </Accordion.Item>
     </Accordion>
 
+    {client.macros ?
     <Accordion defaultActiveKey="0" flush style={{margin: 5}} >
         <Accordion.Item eventKey="0">
             <Accordion.Header>Nutrition Log</Accordion.Header>
@@ -258,6 +265,15 @@ function Home() {
         </Accordion.Body>
         </Accordion.Item>
     </Accordion>
+    :   
+    <Accordion defaultActiveKey="0" flush style={{margin: 5}} >
+        <Accordion.Item eventKey="0">
+        <Accordion.Header>Meals Log</Accordion.Header>
+            <Accordion.Body>
+                <Habits mealsByDay={meals} />
+            </Accordion.Body>
+        </Accordion.Item>
+    </Accordion>}
 
     <Accordion style={{margin: 5}}>
         <Accordion.Item eventKey="1">
@@ -313,7 +329,7 @@ function Home() {
                 </Button> 
             :
                 <Button variant="primary" style={{margin: 10}} onClick={saveDay} disabled={isLoading || formData.complete}>
-                    Complete
+                    Save
                 </Button> 
             } 
         </div>
