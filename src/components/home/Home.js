@@ -62,6 +62,13 @@ function Home() {
         return variable;
       }
 
+    function checkAndSetEmpty(variable) {
+        if (variable === null) {
+            variable = '';
+        }
+        return variable;
+    }  
+
     function alterDate (alterBy) {
         if(!formData.complete) {
             //Prompt to save here
@@ -101,23 +108,26 @@ function Home() {
 
         const client = await getSupabaseClient();
 
+        
         setClient(client);
-
+        
         const {data, error} = await supabase.from('tracking_data').select().match({user_id: client.id, date: formData.date}).limit(1)
-
+        
         if (!error && data.length > 0) {
             const savedData = data[0]
 
+            console.log(savedData, "this is the data")
+
             setFormData({...formData,
-                protein: savedData.protein,
-                carbs: savedData.carbs,
-                fats: savedData.fats,
-                weight: savedData.weight,
-                sleep: savedData.sleep,
-                steps: savedData.steps,
-                complete: savedData.complete,
-                notes: savedData.notes,
-                calories: savedData.calories
+                protein: checkAndSetEmpty(savedData.protein),
+                carbs: checkAndSetEmpty(savedData.carbs),
+                fats: checkAndSetEmpty(savedData.fats),
+                weight: checkAndSetEmpty(savedData.weight),
+                sleep: checkAndSetEmpty(savedData.sleep),
+                steps: checkAndSetEmpty(savedData.steps),
+                complete: checkAndSetEmpty(savedData.complete),
+                notes: checkAndSetEmpty(savedData.notes),
+                calories: checkAndSetEmpty(savedData.calories)
             })
         } else {
             clearData()
