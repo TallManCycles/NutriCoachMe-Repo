@@ -1,5 +1,6 @@
-export const dashboardRoutes = {
+export const adminRoutes = {
   label: 'Admin',
+  visible: true,
   children: [
     {
       name: 'Admin',
@@ -824,9 +825,7 @@ export const documentationRoutes = {
 };
 
 export default [
-  dashboardRoutes,
+  adminRoutes,
   appRoutes,
   pagesRoutes,
-  // modulesRoutes,
-  // documentationRoutes
 ];

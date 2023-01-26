@@ -37,6 +37,7 @@ import Settings from 'components/user/settings/Settings';
 
 //Database
 import { supabase } from 'supabase/supabaseClient'
+import getSupabaseClient from 'supabase/getSupabaseClient';
 
 //Video Call link
 import EmbedFrame from 'components/app/EmbedFrame';
@@ -59,6 +60,7 @@ import Habits from 'components/nutrition/Habits';
 const Layout = () => {
 
   const [session, setSession] = useState(null)
+  const [isAdmin, setIsAdmin] = useState(false)
 
   const HTMLClassList = document.getElementsByTagName('html')[0].classList;
   useContext(AppContext);
@@ -68,6 +70,11 @@ const Layout = () => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session)
     })
+
+    const client = getSupabaseClient()
+    if (client) {
+      setIsAdmin(client.admin)
+    }
 
     //listens to changes via supabase
     supabase.auth.onAuthStateChange((_event, session) => {
@@ -139,7 +146,7 @@ const Layout = () => {
        : 
       <Route element={<MainLayout />}>
 
-        {/* Aadmin Screens */}
+          {/* Admin Screens */}
           <Route path="/admin/active" element={<Main />} />
           <Route path="/admin/active/edituser/:id" element={<EditUser />} />
           <Route path="admin/createworkout" element={<CreateWorkout />} />

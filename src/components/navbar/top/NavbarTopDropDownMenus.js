@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import NavbarDropdown from './NavbarDropdown';
 import {
-  dashboardRoutes,
+  adminRoutes,
   appRoutes,
   pagesRoutes,
   modulesRoutes,
@@ -32,7 +32,7 @@ const NavbarTopDropDownMenus = () => {
   return (
     <>
       <NavbarDropdown title="dashboard">
-        {dashboardRoutes.children[0].children.map(route => (
+        {adminRoutes.children[0].children.map(route => (
           <Dropdown.Item
             key={route.name}
             as={Link}

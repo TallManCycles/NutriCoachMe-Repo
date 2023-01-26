@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, Fragment } from 'react';
+import React, { useContext, useEffect, Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Nav, Navbar, Row, Col } from 'react-bootstrap';
@@ -8,11 +8,18 @@ import Flex from 'components/common/Flex';
 import Logo from 'components/common/Logo';
 import NavbarVerticalMenu from './NavbarVerticalMenu';
 import ToggleButton from './ToggleButton';
-import routes from 'routes/routes';
+import {
+  adminRoutes,
+  appRoutes,
+  pagesRoutes,
+  modulesRoutes,
+  documentationRoutes
+} from 'routes/routes';
 import { capitalize } from 'helpers/utils';
 import NavbarTopDropDownMenus from 'components/navbar/top/NavbarTopDropDownMenus';
 import PurchaseCard from './PurchaseCard';
 import bgNavbar from 'assets/img/generic/bg-navbar.png';
+import getSupabaseClient from 'supabase/getSupabaseClient';
 
 const NavbarVertical = () => {
   const {
@@ -25,8 +32,15 @@ const NavbarVertical = () => {
   } = useContext(AppContext);
 
   const HTMLClassList = document.getElementsByTagName('html')[0].classList;
+  const [isAdmin,setIsAdmin] = useState(false)
 
-  useEffect(() => {
+  useEffect(async () => {
+
+    const client = await getSupabaseClient();
+    if (client) {
+      setIsAdmin(client.admin)
+    }
+
     if (isNavbarVerticalCollapsed) {
       HTMLClassList.add('navbar-vertical-collapsed');
     } else {
@@ -35,6 +49,8 @@ const NavbarVertical = () => {
     return () => {
       HTMLClassList.remove('navbar-vertical-collapsed-hover');
     };
+
+
   }, [isNavbarVerticalCollapsed, HTMLClassList]);
 
   //Control mouseEnter event
@@ -89,14 +105,35 @@ const NavbarVertical = () => {
       >
         <div className="navbar-vertical-content scrollbar">
           <Nav className="flex-column" as="ul">
-            {routes.map(route => (
-              <Fragment key={route.label}>
-                {!route.labelDisable && (
-                  <NavbarLabel label={capitalize(route.label)} />
+
+            {/* Admin Routes */}
+            {isAdmin ? 
+              <>
+                <Fragment key={adminRoutes.label}>
+                  {!adminRoutes.labelDisable && (
+                    <NavbarLabel label={capitalize(adminRoutes.label)} />
+                    )}
+                  <NavbarVerticalMenu routes={adminRoutes.children} />
+                </Fragment>
+              </>
+              : ''}
+
+            {/* User Routes */}
+            
+              <Fragment key={appRoutes.label}>
+                {!appRoutes.labelDisable && (
+                  <NavbarLabel label={capitalize(appRoutes.label)} />
                 )}
-                <NavbarVerticalMenu routes={route.children} />
+                <NavbarVerticalMenu routes={appRoutes.children} />
               </Fragment>
-            ))}
+
+            {/* Auth Routes */}
+              <Fragment key={pagesRoutes.label}>
+                {!pagesRoutes.labelDisable && (
+                  <NavbarLabel label={capitalize(pagesRoutes.label)} />
+                )}
+                <NavbarVerticalMenu routes={pagesRoutes.children} />
+              </Fragment>
           </Nav>
 
           <>
