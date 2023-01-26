@@ -164,8 +164,8 @@ const Layout = () => {
           <Route path="app/chat" element={<Chat />} />
 
           {/* Nutrition */}
-          <Route path="nutrition/macros" element={<Macros radius={['100%', '80%']}/>} />
-          <Route path="nutrition/habits" element={<Habits />} />
+          {/* <Route path="nutrition/macros" element={<Macros radius={['100%', '80%']}/>} />
+          <Route path="nutrition/habits" element={<Habits />} /> */}
 
 
           {/* Course */}
