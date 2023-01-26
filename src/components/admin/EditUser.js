@@ -92,9 +92,10 @@ export default function EditUser() {
       }); 
       navigate(-1);
     }
-    else 
-    console.log(error)
-    toast.error(`Something went wrong`)
+    else {
+      console.log(error)
+      toast.error(`Something went wrong`) 
+    }
   };
 
   async function updateOrInsertNutrition() {
