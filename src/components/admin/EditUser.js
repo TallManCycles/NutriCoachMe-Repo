@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 
+
 export default function EditUser() {
   
   const [formData, setFormData] = useState([])
@@ -24,12 +25,17 @@ export default function EditUser() {
   const parameters = useParams()
   const navigate = useNavigate()
 
-  useEffect(async () => {
-    const {error, data} = await supabase.from('clients').select().eq('id', parameters.id).maybeSingle()
-    if (data) {
-      setFormData(data)
-      getNutritionData()
-    }
+  useEffect(() => {
+    supabase.from('clients').select().eq('id', parameters.id).maybeSingle()
+    .then((response) => {
+        if (response.error) {
+          console.log(response.error)
+        }
+        else {
+          setFormData(response.data)
+          getNutritionData()
+        }
+      })
   }, [])
 
   async function getNutritionData () {
