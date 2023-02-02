@@ -1,5 +1,6 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { Card, Form, Row, ProgressBar, FormLabel } from 'react-bootstrap'
+import { supabase } from 'supabase/supabaseClient';
 
 const Habits = ({mealsByDay}) => {
 

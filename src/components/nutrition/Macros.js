@@ -83,15 +83,9 @@ const MacrosItem = ({ item, index, total }) => {
   );
 };
 
-const Macros = ({ radius }) => {
+const Macros = ({ radius, macros }) => {
 
   const [changed, setChanged] = useState(false)
-
-  const [macros, setMacros] = useState({
-    protein: 0,  
-    carbs: 0,
-    fat: 0,
-    calories: 0 })
 
   const [calories, setCalories] = useState({
           pcalories: macros.protein * 4,
@@ -99,20 +93,11 @@ const Macros = ({ radius }) => {
           fcalories: macros.fat * 9
       })
 
-  async function getData () {
-    const client = await getSupabaseClient();
-    const {data} = await supabase.from('client_nutrition').select().eq('user_id', client.id).limit(1)
-    if (data) {
-      let currentMacros = data[0]
-      setMacros({
-        calories: currentMacros.calories,
-        protein: currentMacros.protein,
-        carbs: currentMacros.carbs,
-        fat: currentMacros.fats})
+  function getData () {
       setCalories({
-        pcalories: currentMacros.protein * 4,
-        ccalories: currentMacros.carbs * 4,
-        fcalories: currentMacros.fats * 9
+        pcalories: macros.protein * 4,
+        ccalories: macros.carbs * 4,
+        fcalories: macros.fats * 9
       })
       setData([
         { id: 1, value: calories.pcalories, macro: macros.protein , name: 'Protein', color: 'primary' },
@@ -120,14 +105,10 @@ const Macros = ({ radius }) => {
         { id: 3, value: calories.ccalories, macro: macros.carbs, name: 'Carbs', color: 'warning' }
       ])
       setChanged(true)
-    } else {
-      console.log("no macros set for this client")
-    }
+    } 
 
-  }
-
-  useEffect(async () => {
-    await getData();
+  useEffect(() => {
+    getData();
   },[changed])
 
   const [data, setData] = useState([
