@@ -3,10 +3,38 @@ import PropTypes from 'prop-types';
 import SimpleBarReact from 'simplebar-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button, Collapse, Form, Image, Card } from 'react-bootstrap';
-import { courseFilters } from 'data/elearning/courseData';
 import { slugifyText } from 'helpers/utils';
 import Flex from 'components/common/Flex';
 import SoftBadge from 'components/common/SoftBadge';
+
+const courseFilters = [
+  {
+    label: 'Category',
+    options: [
+      {
+        label: 'Welcome Series',
+        icon: 'chart-pie',
+        type: 'checkbox',
+        value: 'Welcome',
+        name: 'Welcome'
+      },
+      {
+        label: 'Nutrition',
+        icon: 'chart-pie',
+        type: 'checkbox',
+        value: 'nutrition',
+        name: 'Nutrition'
+      },
+      {
+        label: 'Mindset',
+        icon: 'chart-pie',
+        type: 'checkbox',
+        value: 'mindset',
+        name: 'mindset'
+      }
+    ]
+  }
+  ];
 
 const CourseFilters = ({ setShow, isOffcanvas }) => {
   const [filterOptions, setFilterOptions] = useState([]);

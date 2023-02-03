@@ -44,10 +44,10 @@ import EmbedFrame from 'components/app/EmbedFrame';
 
 //Courses
 import Courses from 'components/course/Courses';
-import CourseDetails from 'components/course/course-details';
-import CreateWorkout from 'components/admin/CreatWorkouts';
+
 
 //Workouts
+import CreateWorkout from 'components/admin/CreatWorkouts';
 import WorkoutLayout from 'components/workouts/WorkoutLayout';
 
 //Chat
@@ -180,14 +180,6 @@ const Layout = () => {
 
           {/* Course */}
           <Route path="course/:courseLayout" element={<Courses />} />
-          <Route
-            path="course/course-details"
-            element={<CourseDetails />}
-          />
-          <Route
-            path="course/course-details/:courseId"
-            element={<CourseDetails />}
-          />
 
           {/* Workouts */}
           <Route path="workouts/workoutlayout" element={<WorkoutLayout />} />

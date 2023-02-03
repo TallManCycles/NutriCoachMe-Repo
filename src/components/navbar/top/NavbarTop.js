@@ -90,7 +90,7 @@ const NavbarTop = () => {
           as="ul"
         >
           <Nav.Item as="li">
-            <SearchBox autoCompleteItem={autoCompleteInitialItem} />
+            {/* <SearchBox autoCompleteItem={autoCompleteInitialItem} /> */}
           </Nav.Item>
         </Nav>
       )}

@@ -32,15 +32,9 @@ const VideoContent = () => {
           <Row className="mb-3 g-3">
             {paginatedCourses.length > 0 ? (
               paginatedCourses.map(course =>
-                layout === 'list' ? (
-                  <Col key={course.id} xs={12}>
-                    <CourseList course={course} />
-                  </Col>
-                ) : (
                   <Col key={course.id} md={6} xxl={4}>
                     <CourseGrid course={course} />
                   </Col>
-                )
               )
             ) : (
               <Card className="bg-transparent shadow-none">
@@ -50,7 +44,7 @@ const VideoContent = () => {
                       icon="exclamation-triangle"
                       className="fs-6 mb-3"
                     />
-                    <h5>No Courses Found!</h5>
+                    <h5>No Videos Found!</h5>
                     <p className="mb-0">
                       Your search did not match any Courses. Please try again.
                     </p>

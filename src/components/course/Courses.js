@@ -14,12 +14,12 @@ import classNames from 'classnames';
 import AppContext, { CourseContext } from 'context/Context';
 import usePagination from 'hooks/usePagination';
 import CourseGrid from './CourseGrid';
-import CourseList from './CourseList';
 import CourseHeader from './CourseHeader';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Flex from 'components/common/Flex';
 import CourseFilters from './CourseFilters';
 import { useBreakpoints } from 'hooks/useBreakpoints';
+import { supabase } from 'supabase/supabaseClient';
 
 const Courses = () => {
   const [showFilterOffcanvas, setShowFilterOffcanvas] = useState(false);
@@ -30,6 +30,8 @@ const Courses = () => {
   const {
     coursesState: { courses }
   } = useContext(CourseContext);
+
+  // const [courses, setCourses] = useState([]);
 
   const {
     config: { isNavbarVerticalCollapsed },
@@ -54,8 +56,8 @@ const Courses = () => {
   } = usePagination(courses, coursePerPage);
 
   const layout = courseLayout.split(/-/)[1];
-  const isList = layout === 'list';
-  const isGrid = layout === 'grid';
+  const isList = false;
+  const isGrid = true;
 
   useEffect(() => {
     isList || isGrid || navigate('/errors/404');
@@ -70,6 +72,10 @@ const Courses = () => {
         coursesNavbarVerticalCollapsed.current
       );
     };
+  }, []);
+
+  useEffect(async () => { 
+
   }, []);
 
   return (
@@ -90,15 +96,9 @@ const Courses = () => {
           <Row className="mb-3 g-3">
             {paginatedCourses.length > 0 ? (
               paginatedCourses.map(course =>
-                layout === 'list' ? (
-                  <Col key={course.id} xs={12}>
-                    <CourseList course={course} />
-                  </Col>
-                ) : (
                   <Col key={course.id} md={6} xxl={4}>
                     <CourseGrid course={course} />
                   </Col>
-                )
               )
             ) : (
               <Card className="bg-transparent shadow-none">
@@ -108,9 +108,9 @@ const Courses = () => {
                       icon="exclamation-triangle"
                       className="fs-6 mb-3"
                     />
-                    <h5>No Courses Found!</h5>
+                    <h5>No Videos Found!</h5>
                     <p className="mb-0">
-                      Your search did not match any Courses. Please try again.
+                      Your search did not match any videos. Please try again.
                     </p>
                   </div>
                 </Card.Body>
