@@ -4,17 +4,22 @@ import { CourseContext } from 'context/Context';
 import { courseReducer } from 'reducers/courseReducer';
 
 
-const courseData = [
-  // {
-  //   id: '1',
-  //   name: 'Offile',
-  //   video: '',
-  //   tags: ''
-  // }
-]
-
-
 const CourseProvider = ({ children }) => {
+
+  let courseData = []
+
+  const setCourseData = async () => {
+    let { data: video_content, error } = await supabase
+    .from('video_content')
+    .select('*')
+
+    if (error) {
+      console.log(error)
+    } else {
+      console.log(video_content)
+      courseData = video_content;
+    }
+  }
 
   const initData = {
     initCourses: courseData,
@@ -28,7 +33,8 @@ const CourseProvider = ({ children }) => {
   return (
     <CourseContext.Provider
       value={{
-        coursesState
+        coursesState,
+        coursesDispatch
       }}
     >
       {children}
