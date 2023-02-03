@@ -1,4 +1,5 @@
 import { DatePicker } from 'antd';
+import { Link } from 'react-router-dom';
 import Flex from 'components/common/Flex';
 import React, {useEffect, useState} from 'react'
 import { Card, Button, Form, Accordion, Spinner } from 'react-bootstrap'
@@ -377,7 +378,8 @@ function Home() {
                 name="steps"
                 value={formData.steps}
                 onChange={handleFieldChange} />
-            <Form.Label>Weight:</Form.Label>
+            {/* Pass the client through to the child component */}
+            <Form.Label><Link to={`charts/chart/${client.id}`}> Weight: </Link></Form.Label>
             <Form.Control 
                 type="number"
                 rows={1}

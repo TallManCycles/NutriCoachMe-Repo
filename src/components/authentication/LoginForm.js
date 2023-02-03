@@ -51,7 +51,7 @@ const LoginForm = ({ hasLabel }) => {
       {isLoading ? 
           <Spinner 
             animation="border" 
-            role="status">
+            role="status" style={{marginLeft: '50%'}}>
             <span className="visually-hidden">Loading...</span>
           </Spinner>
           : ''}
@@ -62,6 +62,7 @@ const LoginForm = ({ hasLabel }) => {
           name="email"
           onChange={handleFieldChange}
           type="email"
+          disabled={isLoading}
         />
       </Form.Group>
 

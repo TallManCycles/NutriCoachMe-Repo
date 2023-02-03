@@ -9,8 +9,6 @@ import { Card, Col, Row } from 'react-bootstrap';
 import BasicECharts from 'components/common/BasicEChart';
 import { GridComponent, TitleComponent, TooltipComponent } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
-import getSupabaseClient from 'supabase/getSupabaseClient';
-import { supabase } from 'supabase/supabaseClient';
 
 echarts.use([
   TitleComponent,

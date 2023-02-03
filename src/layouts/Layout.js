@@ -56,6 +56,7 @@ import Chat from 'components/app/chat/Chat';
 //Nutrution
 import Macros from 'components/nutrition/Macros';
 import Habits from 'components/nutrition/Habits';
+import Chart from 'components/charts/Chart';
 
 const Layout = () => {
 
@@ -154,6 +155,8 @@ const Layout = () => {
           {/* User Home Screen */}
 
           <Route path='/' element={<Home />} />
+
+          <Route path="charts/chart/:id" element={<Chart />} />
 
           {/* Forms */}
 
